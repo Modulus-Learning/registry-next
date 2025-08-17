@@ -1,7 +1,6 @@
 // TODO: refactor our singletons to use some sort of container
 // or context - like https://github.com/jeffijoe/awilix
 
-
 import type { Logger } from 'pino'
 import logger from 'pino'
 

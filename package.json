@@ -10,7 +10,8 @@
     "build": "next build",
     "clean": "rm -rf node_modules .next build dist .turbo",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "format": "biome format src/ --fix"
   },
   "dependencies": {
     "@infonomic/shared": "^1.2.0",

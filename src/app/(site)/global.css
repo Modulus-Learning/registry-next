@@ -12,11 +12,10 @@
  */
 @import "@infonomic/uikit/typography.css";
 
-
 /**
-  * Custom uikit overrides
-  */
-@import '../../ui/styles/overrides.css';
+ * Custom uikit overrides
+ */
+@import "../../ui/styles/overrides.css";
 
 /**
  * Tailwind - should come after the above.
