@@ -69,6 +69,9 @@
     "enabled": true,
     "rules": {
       "recommended": true,
+      "correctness": {
+        "noUnusedVariables": "warn"
+      },
       "style": {
         "noNonNullAssertion": "info",
         "useSelfClosingElements": "off",
