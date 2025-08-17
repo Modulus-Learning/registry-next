@@ -1,12 +1,12 @@
 'use client'
 
+import { usePathname, useRouter } from 'next/navigation'
+import { startTransition, useActionState } from 'react'
+import { useCookies } from 'react-cookie'
 import { useProgress } from '@/context/progress-bar-provider'
 import { i18nConfig } from '@/i18n/i18n-config'
 import { type SetLanguageActionState, setLanguageAction } from '@/i18n/set-language-action'
 import { localeFromPath, pathWithoutLocale } from '@/i18n/utils'
-import { usePathname, useRouter } from 'next/navigation'
-import { startTransition, useActionState } from 'react'
-import { useCookies } from 'react-cookie'
 
 interface NavigateOptions {
   href: string

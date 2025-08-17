@@ -2,7 +2,7 @@
 'use client'
 
 import { usePathname, useSearchParams } from 'next/navigation'
-import { Suspense, startTransition, useActionState } from 'react'
+import { startTransition, useActionState } from 'react'
 
 import type { Locale } from '@/i18n/i18n-config'
 import { type SetLanguageActionState, setLanguageAction } from '@/i18n/set-language-action'

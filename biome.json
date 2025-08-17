@@ -1,5 +1,5 @@
 {
-  "$schema": "https://biomejs.dev/schemas/2.0.5/schema.json",
+  "$schema": "https://biomejs.dev/schemas/2.2.0/schema.json",
   "vcs": {
     "enabled": true,
     "clientKind": "git",
@@ -29,13 +29,29 @@
       "!**/dist",
       "!**/build",
       "!**/node_modules",
-      "!**/.cache"
+      "!**/.cache",
+      "!**/.next",
+      "!**/.output"
     ]
   },
   "assist": {
     "actions": {
       "source": {
-        "organizeImports": "on"
+        "organizeImports": {
+          "level": "on",
+          "options": {
+            "groups": [
+              {
+                "type": false
+              },
+              ":NODE:",
+              ":URL:",
+              "react",
+              ":BLANK_LINE:",
+              "@/**"
+            ]
+          }
+        }
       }
     }
   },
