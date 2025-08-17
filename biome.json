@@ -35,6 +35,7 @@
     ]
   },
   "assist": {
+    "enabled": true,
     "actions": {
       "source": {
         "organizeImports": {
@@ -46,9 +47,18 @@
               },
               ":NODE:",
               ":URL:",
-              "react",
               ":BLANK_LINE:",
-              "@/**"
+              ":PACKAGE:",
+              ":BLANK_LINE:",
+              [
+                "react"
+              ],
+              ":BLANK_LINE:",
+              [
+                "next/**",
+                "@tanstack/**"
+              ],
+              ":BLANK_LINE:"
             ]
           }
         }
