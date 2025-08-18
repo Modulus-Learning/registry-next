@@ -1,10 +1,12 @@
-import type { Metadata } from 'next'
 import { getTranslations } from '@/i18n/server'
 import { AppBarFront } from '@/ui/components/app-bar-front'
 import { ConsoleCredit } from '@/ui/components/console-credit'
+import { SiteFooter } from '@/ui/components/site-footer'
 import { ClientThemeDetector } from '@/ui/theme/client-theme-detector'
 import { EarlyThemeDetection } from '@/ui/theme/early-theme-detector'
 import { Providers } from './providers'
+
+import type { Metadata } from 'next'
 
 import './global.css'
 
@@ -37,6 +39,7 @@ export default async function RootLayout({
           <div className="layout-container flex min-h-screen flex-col">
             <AppBarFront lng="en" />
             <main className="flex flex-1 flex-col">{children}</main>
+            <SiteFooter lng="en" />
           </div>
         </Providers>
       </body>
