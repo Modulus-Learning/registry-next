@@ -82,7 +82,7 @@ export const AppBarFront = ({ className, lng, ref, ...other }: AppBarProps) => {
 
   return (
     <>
-      {/* <ProgressBar className="fixed h-1 shadow-lg z-50 shadow-primary-600/20 bg-primary-900 dark:bg-white top-0" /> */}
+      <ProgressBar className="fixed h-1 shadow-lg z-50 shadow-primary-600/20 bg-primary-900 dark:bg-white top-0" />
       <header
         className={cx('w-full sticky top-0 z-30', appBarBackground, className)}
         ref={ref}

@@ -1,8 +1,9 @@
-export function EarlyThemeDetection() {
+export function EarlyThemeDetection({ nonce }: { nonce?: string }) {
   return (
-    // biome-ignore lint/correctness/useUniqueElementIds: Our id is okay here.
+    // biome-ignore lint/correctness/useUniqueElementIds: id is fine here.
     <script
       id="theme-detection"
+      nonce={nonce ?? undefined}
       // biome-ignore lint/security/noDangerouslySetInnerHtml: We need this.
       dangerouslySetInnerHTML={{
         __html: `
