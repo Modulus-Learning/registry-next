@@ -1,6 +1,5 @@
 'use client'
 
-import type { ReactNode } from 'react'
 import { createContext, useContext, useEffect, useMemo, useState } from 'react'
 import { getTheme as getThemeApi, type ThemeSettings } from './get-theme.ts'
 import { setTheme as setThemeApi } from './set-theme.ts'
@@ -12,6 +11,8 @@ import {
   Theme,
   ThemeSource,
 } from './utils.ts'
+
+import type { ReactNode } from 'react'
 
 // ThemeContext
 interface ThemeContextType {

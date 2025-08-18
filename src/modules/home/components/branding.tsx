@@ -22,8 +22,8 @@ export function Branding() {
           )}
         </div>
       </div>
-      <span
-        className="absolute rounded-full glow -z-20 top-[-500px] opacity-[0.15] dark:opacity-20"
+      <div
+        className="fixed rounded-full glow -z-20 top-[-500px] opacity-[0.15] dark:opacity-20"
         style={{ width: '90vw', height: '90vh' }}
       />
     </>

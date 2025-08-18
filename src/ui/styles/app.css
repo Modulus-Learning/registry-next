@@ -10,6 +10,11 @@
   --loader-color: #16151e;
 }
 
+html,
+body {
+  overflow: visible;
+}
+
 html {
   scroll-padding-top: 90px;
 }

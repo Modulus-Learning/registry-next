@@ -2,8 +2,9 @@
 
 // https://formatjs.io/docs/core-concepts/icu-syntax
 import { IntlMessageFormat } from 'intl-messageformat'
-import type React from 'react'
 import { createContext, useContext } from 'react'
+
+import type React from 'react'
 
 import type { Translations } from '@/i18n/server/index'
 

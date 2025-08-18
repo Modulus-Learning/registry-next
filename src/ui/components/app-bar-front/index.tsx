@@ -81,27 +81,29 @@ export const AppBarFront = ({ className, lng, ref, ...other }: AppBarProps) => {
   const hamburgerColorMobileMenuOpen = 'bg-white before:bg-white after:bg-white'
 
   return (
-    <header
-      className={cx('sticky top-0 z-30 w-full', appBarBackground, className)}
-      ref={ref}
-      {...other}
-    >
-      <ProgressBar className="fixed h-1 shadow-lg z-50 shadow-primary-600/20 bg-primary-900 dark:bg-white top-0" />
-      <div
-        className={cx(
-          'app-bar sticky top-0 flex min-h-[60px] w-full items-center gap-2 pl-0 pr-[12px]',
-          'sm:gap-2 sm:pl-0 sm:pr-[18px]',
-          'transition-all duration-500 ease-out'
-        )}
+    <>
+      {/* <ProgressBar className="fixed h-1 shadow-lg z-50 shadow-primary-600/20 bg-primary-900 dark:bg-white top-0" /> */}
+      <header
+        className={cx('w-full sticky top-0 z-30', appBarBackground, className)}
+        ref={ref}
+        {...other}
       >
-        <div className="lg:flex-initial mr-auto">
-          <Branding lng={lng} hasScrolled={hasScrolled} pathName={pathName} />
+        <div
+          className={cx(
+            'app-bar flex h-[60px] w-full items-center gap-2 pl-0 pr-[12px]',
+            'sm:gap-2 sm:pl-0 sm:pr-[18px]',
+            'transition-all duration-500 ease-out'
+          )}
+        >
+          <div className="lg:flex-initial mr-auto">
+            <Branding lng={lng} hasScrolled={hasScrolled} pathName={pathName} />
+          </div>
+          <Suspense>
+            <LanguageMenu lng={lng} color={appBarTextColor} />
+          </Suspense>
+          <ThemeSwitch className="mr-3" />
         </div>
-        <Suspense>
-          <LanguageMenu lng={lng} color={appBarTextColor} />
-        </Suspense>
-        <ThemeSwitch className="mr-3" />
-      </div>
-    </header>
+      </header>
+    </>
   )
 }

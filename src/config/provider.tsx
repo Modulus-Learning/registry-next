@@ -1,8 +1,9 @@
 'use client'
 
 import { createContext, type ReactNode, useContext } from 'react'
-import type { PublicConfig } from './index.ts'
 import { getPublicConfig } from './index.ts'
+
+import type { PublicConfig } from './index.ts'
 
 export const PublicConfigContext = createContext<PublicConfig | null>(null)
 

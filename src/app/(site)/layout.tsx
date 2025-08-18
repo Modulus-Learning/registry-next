@@ -33,10 +33,10 @@ export default async function RootLayout({
         <meta name="color-scheme" content="dark light" />
         <EarlyThemeDetection />
       </head>
-      <body className="bg-white dark:bg-canvas-900">
+      <body className="bg-white dark:bg-canvas-900 relative">
         <ClientThemeDetector />
         <Providers translations={translations}>
-          <div className="layout-container flex min-h-screen flex-col">
+          <div className="layout-container relative flex min-h-screen flex-col">
             <AppBarFront lng="en" />
             <main className="flex flex-1 flex-col">{children}</main>
             <SiteFooter lng="en" />
