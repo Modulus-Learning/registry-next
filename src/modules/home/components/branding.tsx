@@ -12,13 +12,13 @@ export function Branding() {
 
   return (
     <>
-      <div className="branding -z-10 flex items-center justify-center w-[250px] h-[160px] relative mx-auto">
+      <div className="branding -z-10 flex items-center justify-center w-[250px] h-[140px] relative mx-auto">
         <div className="glow absolute rounded-[100px] z-0 w-[200px] h-[200px] items-center justify-center" />
         <div className="absolute flex z-10 w-[250px] h-[250px] items-center justify-center">
           {theme === 'dark' ? (
-            <Image className="block m-0 p-0" src={logoWhite} width={130} alt="Modulus" />
+            <Image className="block m-0 p-0" src={logoWhite} width={110} alt="Modulus" />
           ) : (
-            <Image className="block m-0 p-0" src={logoBlack} width={130} alt="Modulus" />
+            <Image className="block m-0 p-0" src={logoBlack} width={110} alt="Modulus" />
           )}
         </div>
       </div>
