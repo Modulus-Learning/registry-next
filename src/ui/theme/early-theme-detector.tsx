@@ -1,6 +1,11 @@
-export function EarlyThemeDetection({ nonce }: { nonce?: string }) {
+export function EarlyThemeDetection({
+  nonce,
+  force,
+}: {
+  nonce?: string
+  force?: 'light' | 'dark'
+}) {
   return (
-    // biome-ignore lint/correctness/useUniqueElementIds: id is fine here.
     <script
       id="theme-detection"
       nonce={nonce ?? undefined}
@@ -10,13 +15,27 @@ export function EarlyThemeDetection({ nonce }: { nonce?: string }) {
               (() => {
                 const classList = document.documentElement.classList;
                 const style = document.documentElement.style;
-                const theme = localStorage.theme
-                // This site defaults to dark mode, but respects user preference if set.
-                // const dark = window.matchMedia("(prefers-color-scheme: dark)");
-                if (localStorage.theme == null) {
-                  localStorage.setItem("theme", "dark");
-                  classList.add("dark");
-                  style.colorScheme = "dark";
+                const theme = localStorage?.theme
+                const system = window.matchMedia("(prefers-color-scheme: dark)");
+                const force = ${force}
+                if (theme == null) {
+                  if (force == null) {
+                    if (system.matches) {
+                      classList.remove("light");  
+                      classList.add("dark");
+                      style.colorScheme = "dark";
+                    } else {
+                      classList.remove("dark");
+                      classList.add("light");
+                      style.colorScheme = "light";
+                    }
+                  } else {
+                    localStorage.setItem("theme", force);
+                    classList.remove("light");
+                    classList.remove("dark");
+                    classList.add(force);
+                    style.colorScheme = force;
+                  }
                 } else {
                   if (theme === "dark") {
                     classList.remove("light");

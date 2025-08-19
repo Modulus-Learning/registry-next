@@ -7,12 +7,7 @@
   },
   "files": {
     "ignoreUnknown": false,
-    "includes": [
-      "**",
-      "!**/(payload)",
-      "!**/_payload",
-      "!**/tailwind.css"
-    ]
+    "includes": ["**", "!**/(payload)", "!**/_payload", "!**/tailwind.css"]
   },
   "formatter": {
     "enabled": true,
@@ -50,14 +45,9 @@
               ":BLANK_LINE:",
               ":PACKAGE:",
               ":BLANK_LINE:",
-              [
-                "react"
-              ],
+              ["react"],
               ":BLANK_LINE:",
-              [
-                "next/**",
-                "@tanstack/**"
-              ],
+              ["next/**", "@tanstack/**"],
               ":BLANK_LINE:"
             ]
           }
@@ -70,7 +60,8 @@
     "rules": {
       "recommended": true,
       "correctness": {
-        "noUnusedVariables": "warn"
+        "noUnusedVariables": "warn",
+        "useUniqueElementIds": "off"
       },
       "style": {
         "noNonNullAssertion": "info",

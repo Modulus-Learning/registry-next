@@ -31,10 +31,10 @@ export default async function RootLayout({
         <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
         <meta name="apple-mobile-web-app-title" content="Modulus" />
         <meta name="color-scheme" content="dark light" />
-        <EarlyThemeDetection />
+        <EarlyThemeDetection force="dark" />
       </head>
       <body className="bg-white dark:bg-canvas-900 relative">
-        <ClientThemeDetector />
+        <ClientThemeDetector force="dark" />
         <Providers translations={translations}>
           <div className="layout-container relative flex min-h-screen flex-col">
             <AppBarFront lng="en" />
