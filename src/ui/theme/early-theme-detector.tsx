@@ -17,7 +17,7 @@ export function EarlyThemeDetection({
                 const style = document.documentElement.style;
                 const theme = localStorage?.theme
                 const system = window.matchMedia("(prefers-color-scheme: dark)");
-                const force = ${force}
+                const force = "${force}"
                 if (theme == null) {
                   if (force == null) {
                     if (system.matches) {
