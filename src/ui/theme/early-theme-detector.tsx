@@ -1,15 +1,17 @@
-export function EarlyThemeDetection({
-  nonce,
-  force,
-}: {
-  nonce?: string
-  force?: 'light' | 'dark'
-}) {
+/**
+ * EarlyThemeDetector is a theme detector shim script that runs early on the client
+ * to detect the user's preferred color scheme and apply it to the document.
+ * It will execute as a blocking script in the head section of the html document.
+ * Since it modifies the html element, the html element must have the
+ * suppressHydrationWarning attribute set.
+ */
+
+export function EarlyThemeDetector({ nonce, force }: { nonce?: string; force?: 'light' | 'dark' }) {
   return (
     <script
       id="theme-detection"
       nonce={nonce ?? undefined}
-      // biome-ignore lint/security/noDangerouslySetInnerHtml: We need this.
+      // biome-ignore lint/security/noDangerouslySetInnerHtml: required
       dangerouslySetInnerHTML={{
         __html: `
               (() => {

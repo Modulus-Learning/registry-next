@@ -3,7 +3,7 @@ import { AppBarFront } from '@/ui/components/app-bar-front'
 import { ConsoleCredit } from '@/ui/components/console-credit'
 import { SiteFooter } from '@/ui/components/site-footer'
 import { ClientThemeDetector } from '@/ui/theme/client-theme-detector'
-import { EarlyThemeDetection } from '@/ui/theme/early-theme-detector'
+import { EarlyThemeDetector } from '@/ui/theme/early-theme-detector'
 import { Providers } from './providers'
 
 import type { Metadata } from 'next'
@@ -31,7 +31,7 @@ export default async function RootLayout({
         <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
         <meta name="apple-mobile-web-app-title" content="Modulus" />
         <meta name="color-scheme" content="dark light" />
-        <EarlyThemeDetection force="dark" />
+        <EarlyThemeDetector force="dark" />
       </head>
       <body className="bg-white dark:bg-canvas-900 relative">
         <ClientThemeDetector force="dark" />
