@@ -11,14 +11,12 @@
 import { chainMiddleware } from './middleware/chainMiddleware'
 import { withCSP } from './middleware/withCSP'
 import { withCurrentPath } from './middleware/withCurrentPath'
-import { withFlash } from './middleware/withFlash'
 import { withI18n } from './middleware/withI18n'
 import { withNonce } from './middleware/withNonce'
 import { withPrefersColorScheme } from './middleware/withPrefersColorScheme'
 
 export default chainMiddleware([
   withCurrentPath,
-  withFlash,
   withNonce,
   withCSP,
   withPrefersColorScheme,

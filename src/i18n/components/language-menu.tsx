@@ -7,10 +7,10 @@ import {
   SettingsGearIcon,
 } from '@infonomic/uikit/react'
 import cx from 'classnames'
-
 import { useLanguageSwitcher } from '@/i18n/hooks/use-languag-switcher'
 import { interfaceLanguageMap as languageMap } from '@/i18n/language-map'
 import { t } from '@/i18n/migrate-t'
+
 import type { Locale } from '../i18n-config'
 
 type LanguageMenuIntrinsicProps = React.JSX.IntrinsicElements['div']

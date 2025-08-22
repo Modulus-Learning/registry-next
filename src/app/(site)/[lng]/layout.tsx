@@ -10,6 +10,8 @@ import type { Metadata } from 'next'
 
 import './global.css'
 
+import type { Locale } from '@/i18n/i18n-config'
+
 export const metadata: Metadata = {
   title: 'Modulus Registry',
   description:
@@ -18,10 +20,16 @@ export const metadata: Metadata = {
 
 export default async function RootLayout({
   children,
-}: Readonly<{
+  params,
+}: {
+  modal: React.ReactNode
   children: React.ReactNode
-}>) {
-  const translations = await getTranslations('en')
+  params: Promise<{
+    lng: Locale
+  }>
+}): Promise<React.JSX.Element> {
+  const { lng } = await params
+  const translations = await getTranslations(lng)
   return (
     <html lang="en" suppressHydrationWarning data-scroll-behavior="smooth">
       <head>
@@ -37,9 +45,9 @@ export default async function RootLayout({
         <ClientThemeDetector force="dark" />
         <Providers translations={translations}>
           <div className="layout-container relative flex min-h-screen flex-col">
-            <AppBarFront lng="en" />
+            <AppBarFront lng={lng} />
             <main className="flex flex-1 flex-col">{children}</main>
-            <SiteFooter lng="en" />
+            <SiteFooter lng={lng} />
           </div>
         </Providers>
       </body>

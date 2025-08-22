@@ -15,11 +15,11 @@
 /**
  * Custom uikit overrides
  */
-@import "../../ui/styles/overrides.css";
+@import "../../../ui/styles/overrides.css";
 
 /**
  * Tailwind - should come after the above.
  */
-@import "../../ui/styles/tailwind.css";
+@import "../../../ui/styles/tailwind.css";
 
-@import "../../ui/styles/app.css";
+@import "../../../ui/styles/app.css";

@@ -1,10 +1,9 @@
-import type { NextRequest } from 'next/server'
-
 import { match } from '@formatjs/intl-localematcher'
 import Negotiator from 'negotiator'
-
-import { type Locale, i18nConfig } from '@/i18n/i18n-config'
+import { i18nConfig, type Locale } from '@/i18n/i18n-config'
 import { localeFromPath } from '@/i18n/utils'
+
+import type { NextRequest } from 'next/server'
 
 /**
  * Current detection strategy is 1) cookie, 2) path, 3) user agent, 4) default
@@ -12,11 +11,11 @@ import { localeFromPath } from '@/i18n/utils'
  * @returns string locale
  */
 export function getLocale(request: NextRequest): string {
-  let locale
+  let locale: Locale | undefined
 
   // 1. Cookie detection first
   if (request.cookies.has(i18nConfig.cookieName)) {
-    locale = request?.cookies?.get(i18nConfig.cookieName)?.value
+    locale = request?.cookies?.get(i18nConfig.cookieName)?.value as Locale
     // Double check that the cookie value is actually a valid
     // locale (it may have been 'fiddled' with)
     if (locale != null && i18nConfig.locales.includes(locale as Locale) === false) {
@@ -27,7 +26,7 @@ export function getLocale(request: NextRequest): string {
   // 2. Path detection second
   if (locale == null) {
     const pathname = request.nextUrl.pathname
-    locale = localeFromPath(pathname, false)
+    locale = localeFromPath(pathname, false) as Locale | undefined
   }
 
   // 3. Browser / user agent locales third
@@ -38,11 +37,15 @@ export function getLocale(request: NextRequest): string {
     try {
       // Negotiator expects plain object so we need to transform headers
       const negotiatorHeaders: Record<string, string> = {}
-      request.headers.forEach((value, key) => (negotiatorHeaders[key] = value))
+      request.headers.forEach((value, key) => {
+        negotiatorHeaders[key] = value
+      })
       const browserLanguages = new Negotiator({ headers: negotiatorHeaders }).languages()
-      locale = match(browserLanguages, i18nConfig.locales, i18nConfig.defaultLocale)
+      locale = match(browserLanguages, i18nConfig.locales, i18nConfig.defaultLocale) as
+        | Locale
+        | undefined
     } catch (error) {
-      // console.warn(`Failed to match locale: ${error}`)
+      console.error(`Failed to match locale: ${error}`)
       locale = i18nConfig.defaultLocale
     }
   }

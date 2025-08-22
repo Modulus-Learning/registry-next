@@ -1,12 +1,13 @@
 // https://nextjs.org/docs/app/building-your-application/configuring/content-security-policy
 
+import { getCSPHeader, getServerConfig } from '@/config'
+
 import type { NextFetchEvent, NextRequest } from 'next/server'
 
-import { getCSPHeader, getConfig } from '@/config'
 import type { MiddlewareFactory } from './@types'
 
 export const withCSP: MiddlewareFactory = (next) => {
-  const config = getConfig()
+  const config = getServerConfig()
 
   return async (request: NextRequest, event: NextFetchEvent) => {
     if (config.cspEnabled && request.headers.get('x-nonce') != null) {
