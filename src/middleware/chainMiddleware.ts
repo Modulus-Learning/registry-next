@@ -2,6 +2,7 @@
 // https://github.com/jmarioste/next-middleware-guide/
 
 import { NextResponse } from 'next/server'
+
 import type { ChainableMiddleware, MiddlewareFactory } from './@types'
 
 /**

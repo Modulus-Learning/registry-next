@@ -1,5 +1,4 @@
 import { type NextFetchEvent, type NextRequest, NextResponse } from 'next/server'
-
 import { i18nConfig } from '@/i18n/i18n-config'
 import { getLocale } from './get-locale'
 
