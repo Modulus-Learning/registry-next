@@ -8,9 +8,9 @@ import type { Locale } from '@/i18n/i18n-config'
 // to be statically rendered at build time - WITHOUT
 // initially fetching data. The client will receive
 // Cache-Control header s-maxage=60, stale-while-revalidate=31535940
-// and it will re-render, or attempt to 'refresh' page on first
-// request, followed by the above caching policy for all subsequent
-// requests.
+// and it will re-render, and attempt to 'refresh' page on first
+// request (including the data request), followed by the above
+// caching policy for all subsequent requests.
 export const revalidate = 60
 export const dynamic = 'force-static'
 export const dynamicParams = true // or false, to 404 on unknown paths
