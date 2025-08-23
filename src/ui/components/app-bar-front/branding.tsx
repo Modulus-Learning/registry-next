@@ -2,12 +2,14 @@
 
 import cx from 'classnames'
 import Image from 'next/image'
-import type React from 'react'
 import { LangLink } from '@/i18n/components/lang-link'
-import type { Locale } from '@/i18n/i18n-config'
 import logoBlack from '@/images/logo/modulus-logo-black.svg'
 import logoWhite from '@/images/logo/modulus-logo-white.svg'
 import { useTheme } from '@/ui/theme/provider'
+
+import type React from 'react'
+
+import type { Locale } from '@/i18n/i18n-config'
 
 export function Branding({
   lng,

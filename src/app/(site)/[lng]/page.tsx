@@ -2,9 +2,25 @@ import { Card, Container, Section } from '@infonomic/uikit/react'
 import { Branding } from '@/modules/home/components/branding'
 import { getRegistry } from '@/modules/registry/get-registry'
 
-export const revalidate = 60
+import type { Locale } from '@/i18n/i18n-config'
 
-export default async function HomePage() {
+// Will need to double check - but this allows the page
+// to be statically rendered at build time - WITHOUT
+// initially fetching data. The client will receive
+// Cache-Control header s-maxage=60, stale-while-revalidate=31535940
+// and it will re-render, or attempt to 'refresh' page on first
+// request, followed by the above caching policy for all subsequent
+// requests.
+export const revalidate = 60
+export const dynamic = 'force-static'
+export const dynamicParams = true // or false, to 404 on unknown paths
+
+export default async function AboutPage({
+  params,
+}: {
+  params: Promise<{ lng: Locale }>
+}): Promise<React.JSX.Element> {
+  const { lng } = await params
   const { installations } = await getRegistry()
   return (
     <Section className="relative mb-12">

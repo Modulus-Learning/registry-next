@@ -9,6 +9,7 @@ type Registrant = {
 }
 
 export async function getRegistry(): Promise<{ installations: Registrant[] }> {
+  console.log('Fetching registry data...')
   const config = getPublicConfig()
   const res = await fetch(config.gitHubRegistryDataUrl)
   const data = await res.json()
