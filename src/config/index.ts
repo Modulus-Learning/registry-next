@@ -1,14 +1,14 @@
 import { booleanSchema, urlSchema } from '@infonomic/shared/schemas'
 import { z } from 'zod'
 
-const publicSchema = z.object({
-  siteName: z.string(),
-  siteDescription: z.string(),
-  serverUrl: urlSchema,
-  gitHubRegistryDataUrl: urlSchema,
-  cspEnabled: booleanSchema(),
-})
-
+/**
+ * Server configuration schema and functions. Note that these
+ * values are ONLY available on the server and NOT available
+ * at build time and therefore not available to the browser.
+ * Values here are populated via the projects's .env file
+ * which is NOT committed to the project's Git repo and
+ * CAN include secrets.
+ */
 const serverSchema = z.object({
   port: z.coerce.number().int(),
   siteName: z.string(),
@@ -36,27 +36,16 @@ const serverSchema = z.object({
   }),
 })
 
-export type PublicConfig = z.infer<typeof publicSchema>
-
-const initPublicConfig = (): PublicConfig =>
-  publicSchema.parse({
-    siteName: process.env.NEXT_PUBLIC_SITE_NAME,
-    siteDescription: process.env.NEXT_PUBLIC_SITE_DESCRIPTION,
-    serverUrl: process.env.NEXT_PUBLIC_SERVER_URL,
-    gitHubRegistryDataUrl: process.env.NEXT_PUBLIC_GITHUB_REGISTRY_DATA_URL,
-    cspEnabled: process.env.NEXT_PUBLIC_CSP_ENABLED,
-  })
-
 export type ServerConfig = z.infer<typeof serverSchema>
 
 const initServerConfig = (): ServerConfig =>
   serverSchema.parse({
     port: process.env.PORT,
-    siteName: process.env.SITE_NAME,
-    siteDescription: process.env.SITE_DESCRIPTION,
-    publicServerUrl: process.env.PUBLIC_SERVER_URL,
-    gitHubRegistryDataUrl: process.env.GITHUB_REGISTRY_DATA_URL,
-    cspEnabled: process.env.CSP_ENABLED,
+    siteName: process.env.NEXT_PUBLIC_SITE_NAME,
+    siteDescription: process.env.NEXT_PUBLIC_SITE_DESCRIPTION,
+    publicServerUrl: process.env.NEXT_PUBLIC_SERVER_URL,
+    gitHubRegistryDataUrl: process.env.NEXT_PUBLIC_GITHUB_REGISTRY_DATA_URL,
+    cspEnabled: process.env.NEXT_PUBLIC_CSP_ENABLED,
     log: {
       level: process.env.LOG_LEVEL ?? 'info',
       pretty: process.env.LOG_PRETTY,
@@ -85,6 +74,34 @@ export const getServerConfig = (): ServerConfig => {
   }
   return cachedServerConfig
 }
+
+/**
+ * Public configuration schema and functions. Note that these
+ * values are populated via .env.public and NEXT_PUBLIC_... vars
+ * which are available at 'build time', and are compiled into
+ * the Next.js client application - and therefore shipped to
+ * the browser. .env.public is also committed to the project's
+ * Git repo - and so it's essential that these values
+ * DO NOT contain secrets.
+ */
+const publicSchema = z.object({
+  siteName: z.string(),
+  siteDescription: z.string(),
+  serverUrl: urlSchema,
+  gitHubRegistryDataUrl: urlSchema,
+  cspEnabled: booleanSchema(),
+})
+
+export type PublicConfig = z.infer<typeof publicSchema>
+
+const initPublicConfig = (): PublicConfig =>
+  publicSchema.parse({
+    siteName: process.env.NEXT_PUBLIC_SITE_NAME,
+    siteDescription: process.env.NEXT_PUBLIC_SITE_DESCRIPTION,
+    serverUrl: process.env.NEXT_PUBLIC_SERVER_URL,
+    gitHubRegistryDataUrl: process.env.NEXT_PUBLIC_GITHUB_REGISTRY_DATA_URL,
+    cspEnabled: process.env.NEXT_PUBLIC_CSP_ENABLED,
+  })
 
 let cachedPublicConfig: PublicConfig
 
