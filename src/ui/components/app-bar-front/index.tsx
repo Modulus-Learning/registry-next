@@ -90,7 +90,7 @@ export const AppBarFront = ({ className, lng, ref, ...other }: AppBarProps) => {
       >
         <div
           className={cx(
-            'app-bar flex h-[60px] w-full items-center gap-2 pl-0 pr-[12px]',
+            'app-bar flex h-[60px] w-full items-center gap-4 pl-0 pr-[12px]',
             'sm:gap-2 sm:pl-0 sm:pr-[18px]',
             'transition-all duration-500 ease-out'
           )}
@@ -101,7 +101,7 @@ export const AppBarFront = ({ className, lng, ref, ...other }: AppBarProps) => {
           <Suspense>
             <LanguageMenu lng={lng} color={appBarTextColor} />
           </Suspense>
-          <ThemeSwitch className="mr-3" />
+          <ThemeSwitch className="mr-0" />
         </div>
       </header>
     </>
