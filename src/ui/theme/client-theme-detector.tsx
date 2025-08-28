@@ -50,7 +50,7 @@ export function ClientThemeDetector({ force }: { force?: 'light' | 'dark' }) {
         style.colorScheme = 'light'
       }
     }
-  }, [pathname]) // Runs on every route change
+  }, [pathname, force]) // Runs on every route change
 
   return null
 }

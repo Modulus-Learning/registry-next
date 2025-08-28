@@ -1,13 +1,14 @@
-import { resolve } from 'node:path';
-import { config } from 'dotenv';
-import type { NextConfig } from "next";
+import { resolve } from 'node:path'
+import { config } from 'dotenv'
+
+import type { NextConfig } from 'next'
 
 // Disable dotenv tips/messages
-process.env.DOTENV_CONFIG_QUIET = 'true';
+process.env.DOTENV_CONFIG_QUIET = 'true'
 
 // Load .env.public first, then .env (so .env can override)
-config({ path: resolve(process.cwd(), '.env.public') });
-config({ path: resolve(process.cwd(), '.env') });
+config({ path: resolve(process.cwd(), '.env.public') })
+config({ path: resolve(process.cwd(), '.env') })
 
 const nextConfig: NextConfig = {
   output: 'standalone',
@@ -21,6 +22,6 @@ const nextConfig: NextConfig = {
       },
     ],
   },
-};
+}
 
-export default nextConfig;
+export default nextConfig
