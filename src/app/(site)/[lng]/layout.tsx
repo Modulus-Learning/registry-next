@@ -2,7 +2,6 @@ import { getTranslations } from '@/i18n/server'
 import { AppBarFront } from '@/ui/components/app-bar-front'
 import { ConsoleCredit } from '@/ui/components/console-credit'
 import { SiteFooter } from '@/ui/components/site-footer'
-import { ClientThemeDetector } from '@/ui/theme/client-theme-detector'
 import { EarlyThemeDetector } from '@/ui/theme/early-theme-detector'
 import { Providers } from './providers'
 
@@ -42,7 +41,6 @@ export default async function RootLayout({
         <EarlyThemeDetector force="dark" />
       </head>
       <body className="bg-white dark:bg-canvas-900 relative">
-        <ClientThemeDetector force="dark" />
         <Providers translations={translations}>
           <div className="layout-container relative flex min-h-screen flex-col">
             <AppBarFront lng={lng} />

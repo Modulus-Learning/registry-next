@@ -1,6 +1,7 @@
 'use client'
 
-import { createContext, useContext, useEffect, useMemo, useState } from 'react'
+import { usePathname } from 'next/navigation'
+import { createContext, useCallback, useContext, useEffect, useMemo, useState } from 'react'
 import { getTheme as getThemeApi, type ThemeSettings } from './get-theme.ts'
 import { setTheme as setThemeApi } from './set-theme.ts'
 import {
@@ -24,74 +25,109 @@ const ThemeContext = createContext<ThemeContextType | undefined>(undefined)
 
 interface ThemeProviderProps {
   children: ReactNode
+  force?: Theme
 }
 
-// ThemeProvider
-function ThemeProvider({ children }: ThemeProviderProps): React.JSX.Element {
-  const [themeSettings, setThemeSettings] = useState<ThemeSettings | null>(null)
+/**
+ * Client-side ThemeProvider that:
+ * - lazily initializes from cookies/localStorage via getThemeApi()
+ * - reacts to prefers-color-scheme changes when source is HEADER
+ * - exposes stable setTheme/getTheme helpers
+ */
+export function ThemeProvider({ children, force }: ThemeProviderProps): React.JSX.Element {
+  // Lazy init runs only on the client during hydration.
+  const [themeSettings, setThemeSettings] = useState<ThemeSettings | null>(() => getThemeApi())
+  const pathname = usePathname()
 
-  // This effect will install an event listener to react to browser
-  // prefers-color-scheme changes, but only if the current theme is
-  // based on the browser having sent the sec-ch-prefers-color-scheme header.
-  // https://wicg.github.io/user-preference-media-features-headers/
-  // https://caniuse.com/mdn-http_headers_sec-ch-prefers-color-scheme
-  //
-  // If the theme is based on stored (i.e. the user selected the theme
-  // manually) we don't change themes here (when the theme is set manually,
-  // and stored in localStorage, we don't base the theme on
-  // prefers-color-scheme at all, so we shouldn't update the theme when
-  // it changes).
+  // Subscribe to matchMedia changes so that visitors without a
+  // stored preference can have their system preference changes
+  // reflected in the UI.
   useEffect(() => {
-    if (themeSettings == null) {
-      const themeSettings = getThemeApi()
-      setThemeSettings(themeSettings)
-    } else if (themeSettings.source === ThemeSource.HEADER) {
-      const mediaQuery = window.matchMedia(PREFERS_DARK_MQ)
-      const handleChange = (ev: MediaQueryListEvent): void => {
-        const prefers = ev.matches ? Theme.DARK : Theme.LIGHT
-        setPrefersTheme(prefers)
-        setPrefersColorScheme(prefers)
-        setThemeSettings({ ...themeSettings, theme: prefers })
-      }
-      mediaQuery.addEventListener('change', handleChange)
-      return () => {
-        mediaQuery.removeEventListener('change', handleChange)
-      }
-    }
-  }, [themeSettings])
+    if (themeSettings?.source !== ThemeSource.HEADER) return
 
-  const contextValue = useMemo(() => {
-    const setTheme = (prefers: Theme): void => {
-      // Persist the theme choice via the /set-theme route.ts api call
-      // which will set the theme cookie.
-      void setThemeApi(prefers)
-      // Update the theme in state.'
-      // Optimistically set here so there is no delay in theme change
-      // Even with 'action' above - there's a delay in receiving the response from
-      // the server.
+    const mediaQuery = window.matchMedia(PREFERS_DARK_MQ)
+    const handleChange = (ev: MediaQueryListEvent) => {
+      const prefers = ev.matches ? Theme.DARK : Theme.LIGHT
+      // Update immediate DOM hints to avoid flicker.
       setPrefersTheme(prefers)
       setPrefersColorScheme(prefers)
-      // Then trigger the state change
-      setThemeSettings({ theme: prefers, source: ThemeSource.STORED })
+      // Update provider state using the functional form.
+      setThemeSettings((currentSettings) => ({
+        ...currentSettings,
+        source: ThemeSource.HEADER,
+        theme: prefers,
+      }))
     }
 
-    const getTheme = (): Theme => {
-      return themeSettings?.theme ?? DEFAULT_THEME
-    }
+    mediaQuery.addEventListener('change', handleChange)
+    return () => mediaQuery.removeEventListener('change', handleChange)
+  }, [themeSettings?.source])
 
-    return { theme: themeSettings?.theme, setTheme, getTheme }
+  // Apply forced theme or re-apply current theme on route changes.
+  // In Next.js, a route change may replace the entire HTML document
+  // including the html class attributes for theme, without a full page
+  // reload, in which case our EarlyThemeDetector script/shim won't run
+  // and the previous html classes set by EarlyThemeDetector will be lost,
+  // so we need to re-apply the theme. This can happen on route changes
+  // to not-found pages, for example.
+  // If EarlyThemeDetector hasn't run - this will still cause a FOUC,
+  // but better than showing the wrong theme.
+  // biome-ignore lint/correctness/useExhaustiveDependencies: run on pathname changes
+  useEffect(() => {
+    const currentTheme = themeSettings?.theme ?? DEFAULT_THEME
+    const source = themeSettings?.source
+
+    // Only force the theme if the user has not already stored a preference
+    // in localStorage.
+    if (force != null && source !== ThemeSource.STORED) {
+      setThemeApi(force)
+      setPrefersTheme(force)
+      setPrefersColorScheme(force)
+      setThemeSettings({
+        source: ThemeSource.STORED,
+        theme: force,
+      })
+    } else {
+      // Re-apply the current theme to the document.
+      setPrefersTheme(currentTheme)
+      setPrefersColorScheme(currentTheme)
+    }
+  }, [pathname, force, themeSettings]) // Runs on every route change
+
+  // Persist + apply a user-selected theme.
+  const setTheme = useCallback((prefers: Theme) => {
+    // Persist asynchronously (e.g., set localStorage).
+    setThemeApi(prefers)
+    // Immediate optimistic UI update (no waiting for network).
+    setPrefersTheme(prefers)
+    setPrefersColorScheme(prefers)
+    // Mark source as STORED (user override).
+    setThemeSettings({ theme: prefers, source: ThemeSource.STORED })
+  }, [])
+
+  // Read the active theme with a safe default.
+  const getTheme = useCallback<() => Theme>(() => {
+    return themeSettings?.theme ?? DEFAULT_THEME
   }, [themeSettings])
+
+  // Keep the context value identity as stable as possible.
+  const contextValue = useMemo<ThemeContextType>(
+    () => ({
+      theme: themeSettings?.theme,
+      setTheme,
+      getTheme,
+    }),
+    [themeSettings?.theme, setTheme, getTheme]
+  )
 
   return <ThemeContext.Provider value={contextValue}>{children}</ThemeContext.Provider>
 }
 
 // Hook helper useTheme
-function useTheme(): ThemeContextType {
-  const context = useContext(ThemeContext)
-  if (context === undefined) {
+export function useTheme(): ThemeContextType {
+  const ctx = useContext(ThemeContext)
+  if (ctx == null) {
     throw new Error('useTheme must be used within a ThemeProvider')
   }
-  return context
+  return ctx
 }
-
-export { ThemeProvider, useTheme }

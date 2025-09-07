@@ -5,7 +5,6 @@ import Image from 'next/image'
 import { LangLink } from '@/i18n/components/lang-link'
 import logoBlack from '@/images/logo/modulus-logo-black.svg'
 import logoWhite from '@/images/logo/modulus-logo-white.svg'
-import { useTheme } from '@/ui/theme/provider'
 
 import type React from 'react'
 
@@ -20,7 +19,6 @@ export function Branding({
   hasScrolled: boolean
   pathName: string
 }): React.JSX.Element {
-  const { theme } = useTheme()
   const brandingBackground =
     hasScrolled || pathName.length > 3 ? 'bg-transparent' : 'bg-transparent'
 
@@ -33,11 +31,8 @@ export function Branding({
     >
       <div className="w-[150px] sm:w-[150px]">
         <LangLink prefetch={false} href="/" lng={lng}>
-          {theme === 'dark' ? (
-            <Image priority src={logoWhite} width={150} alt="Modulus" />
-          ) : (
-            <Image priority src={logoBlack} width={150} alt="Modulus" />
-          )}
+          <Image src={logoWhite} className="hidden dark:block" width={150} alt="Modulus" />
+          <Image src={logoBlack} className="block dark:hidden" width={150} alt="Modulus" />
         </LangLink>
       </div>
     </div>

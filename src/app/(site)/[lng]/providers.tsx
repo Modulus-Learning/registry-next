@@ -6,6 +6,7 @@ import { PublicConfigProvider } from '@/config/provider'
 import { ProgressBarProvider } from '@/context/progress-bar-provider'
 import { TranslationsProvider } from '@/i18n/client/translations-provider'
 import { ThemeProvider } from '@/ui/theme/provider'
+import { Theme } from '@/ui/theme/utils'
 
 import type React from 'react'
 
@@ -19,7 +20,7 @@ export interface ProvidersProps {
 export function Providers({ translations, children }: ProvidersProps) {
   return (
     <PublicConfigProvider>
-      <ThemeProvider>
+      <ThemeProvider force={Theme.DARK}>
         <ToastProvider swipeDirection="right">
           <ProgressBarProvider>
             <CookiesProvider defaultSetOptions={{ path: '/' }}>

@@ -7,6 +7,8 @@ import { Theme } from './utils'
 
 import type React from 'react'
 
+import './theme-switch.css'
+
 type ThemeSwitchIntrinsicProps = React.JSX.IntrinsicElements['div']
 interface ThemeSwitchProps extends ThemeSwitchIntrinsicProps {
   className?: string
@@ -43,10 +45,11 @@ const ThemeSwitch = ({
       {...rest}
     >
       <div className="relative w-[24px] h-[24px] flex items-center justify-center">
-        <div className={`light ${isDark ? 'shown' : 'hidden'}`}>
+        {/* Both icons are always rendered; CSS handles visibility to avoid hydration mismatches */}
+        <div className="light">
           <LightIcon svgClassName={lightIconClassName} />
         </div>
-        <div className={`moon ${isDark ? 'hidden' : 'shown'}`}>
+        <div className="moon">
           <MoonIcon svgClassName={moonIconClassName} height="22px" width="22px" />
         </div>
       </div>
@@ -57,5 +60,4 @@ const ThemeSwitch = ({
 ThemeSwitch.displayName = 'ThemeSwitch'
 
 export { ThemeSwitch }
-
 export type { ThemeSwitchProps }

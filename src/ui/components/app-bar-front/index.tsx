@@ -5,7 +5,7 @@ import { usePathname } from 'next/navigation'
 import { Suspense, useEffect, useState } from 'react'
 import { ProgressBar } from '@/context/progress-bar-provider'
 import { LanguageMenu } from '@/i18n/components/language-menu'
-import { ThemeSwitch } from '@/ui/theme/switch'
+import { ThemeSwitch } from '@/ui/theme/theme-switch'
 import { Branding } from './branding'
 
 import type { Locale } from '@/i18n/i18n-config'
