@@ -15,14 +15,17 @@ export function ClientThemeDetector({ force }: { force?: 'light' | 'dark' }) {
 
   // biome-ignore lint/correctness/useExhaustiveDependencies: We rely on pathname to trigger the effect
   useEffect(() => {
-    // console.log("Client theme detector running for:", pathname)
     const classList = document.documentElement.classList
     const style = document.documentElement.style
-    const theme = localStorage.theme
     const system = window.matchMedia('(prefers-color-scheme: dark)')
+    let theme = localStorage.theme
+    if (theme != null && theme !== 'dark' && theme !== 'light') {
+      localStorage.removeItem('theme') // Clean up invalid value
+      theme = null
+    }
 
-    if (localStorage.theme == null) {
-      if (force == null) {
+    if (theme == null) {
+      if (force == null || force.length === 0) {
         if (system.matches) {
           classList.remove('light')
           classList.add('dark')
