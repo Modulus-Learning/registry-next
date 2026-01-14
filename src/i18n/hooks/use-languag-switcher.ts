@@ -3,9 +3,9 @@
 
 import { usePathname, useSearchParams } from 'next/navigation'
 import { startTransition, useActionState } from 'react'
+import { type SetLanguageActionState, setLanguageAction } from '@/i18n/set-language-action'
 
 import type { Locale } from '@/i18n/i18n-config'
-import { type SetLanguageActionState, setLanguageAction } from '@/i18n/set-language-action'
 
 interface UseLanguageSwitcherProps {
   initialLocale: Locale
