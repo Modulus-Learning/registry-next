@@ -8,14 +8,14 @@
 // https://nextjs.org/docs/app/building-your-application/configuring/content-security-policy
 // https://github.com/vercel/next.js/discussions/54907
 
-import { chainMiddleware } from './middleware/chainMiddleware'
+import { chainMiddleware as proxy } from './middleware/chainMiddleware'
 import { withCSP } from './middleware/withCSP'
 import { withCurrentPath } from './middleware/withCurrentPath'
 import { withI18n } from './middleware/withI18n'
 import { withNonce } from './middleware/withNonce'
 import { withPrefersColorScheme } from './middleware/withPrefersColorScheme'
 
-export default chainMiddleware([
+export default proxy([
   withCurrentPath,
   withNonce,
   withCSP,

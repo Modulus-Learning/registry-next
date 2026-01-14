@@ -1,11 +1,12 @@
 'use client'
 
+import type React from 'react'
+
 import { LightIcon, MoonIcon } from '@infonomic/uikit/react'
 import cx from 'classnames'
+
 import { useTheme } from './provider'
 import { Theme } from './utils'
-
-import type React from 'react'
 
 import './theme-switch.css'
 
@@ -47,10 +48,10 @@ const ThemeSwitch = ({
       <div className="relative w-[24px] h-[24px] flex items-center justify-center">
         {/* Both icons are always rendered; CSS handles visibility to avoid hydration mismatches */}
         <div className="light">
-          <LightIcon svgClassName={lightIconClassName} />
+          <LightIcon svgClassName="text-white" height="22px" width="22px" />
         </div>
         <div className="moon">
-          <MoonIcon svgClassName={moonIconClassName} height="22px" width="22px" />
+          <MoonIcon svgClassName="text-black" height="22px" width="22px" />
         </div>
       </div>
     </div>

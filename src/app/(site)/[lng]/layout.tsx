@@ -5,7 +5,7 @@ import { SiteFooter } from '@/ui/components/site-footer'
 import { EarlyThemeDetector } from '@/ui/theme/early-theme-detector'
 import { Providers } from './providers'
 
-import type { Metadata } from 'next'
+import type { Metadata, Viewport } from 'next'
 
 import './global.css'
 
@@ -20,14 +20,8 @@ export const metadata: Metadata = {
 export default async function RootLayout({
   children,
   params,
-}: {
-  modal: React.ReactNode
-  children: React.ReactNode
-  params: Promise<{
-    lng: Locale
-  }>
-}): Promise<React.JSX.Element> {
-  const { lng } = await params
+}: LayoutProps<'/[lng]'>): Promise<React.JSX.Element> {
+  const { lng } = (await params) as { lng: Locale }
   const translations = await getTranslations(lng)
   return (
     <html lang="en" suppressHydrationWarning data-scroll-behavior="smooth">

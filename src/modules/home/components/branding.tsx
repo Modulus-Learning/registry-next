@@ -9,11 +9,11 @@ import './branding.css'
 export function Branding() {
   return (
     <>
-      <div className="branding -z-10 flex items-center justify-center w-[250px] h-[120px] relative mx-auto">
+      <div className="branding -z-10 flex items-center justify-center w-[250px] h-[110px] relative mx-auto">
         <div className="glow absolute rounded-[100px] z-0 w-[200px] h-[200px] items-center justify-center" />
         <div className="absolute flex z-10 w-[250px] h-[250px] items-center justify-center">
-          <Image src={logoWhite} className="hidden dark:block" width={100} alt="Modulus" />
-          <Image src={logoBlack} className="block dark:hidden" width={100} alt="Modulus" />
+          <Image src={logoWhite} className="hidden dark:block" width={80} alt="Modulus" />
+          <Image src={logoBlack} className="block dark:hidden" width={80} alt="Modulus" />
         </div>
       </div>
       <div

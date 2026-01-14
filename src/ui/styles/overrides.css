@@ -95,72 +95,160 @@
   --canvas-800: oklch(from var(--canvas-base) calc(l * 0.335) c h);
   --canvas-900: oklch(from var(--canvas-base) calc(l * 0.3) c h);
   --canvas-950: oklch(from var(--canvas-base) calc(l * 0.225) c h);
+
+
+  /* Fill tokens - for solid backgrounds (filled variant) */
+  --fill-primary-strong: var(--primary-500);
+  --fill-primary-strong-hover: oklch(from var(--primary-500) calc(l * 0.9) c h);
+  --fill-primary-strong-disabled: oklch(from var(--primary-500) calc(l * 1.1) calc(c * 0.85) h);
+
+  --fill-primary-weak: oklch(from var(--primary-300) calc(l * 1.5) calc(c * 0.2) h / 0.5);
+  --fill-primary-weak-hover: oklch(from var(--primary-300) calc(l * 1.35) calc(c * 0.2) h / 0.5);
+  --fill-primary-weak-disabled: oklch(from var(--primary-300) calc(l * 1.35) calc(c * 0.2) h / 0.5);
+
+  --fill-primary-outlined: transparent;
+  --fill-primary-outlined-hover: oklch(from var(--primary-50) calc(l * 2) calc(c * 0.2) h / 0.4);
+  --fill-primary-outlined-disabled: oklch(from var(--primary-50) calc(l * 2) calc(c * 0.2) h / 0.4);
+
+  /* Text tokens */
+  --text-on-primary-strong: white;
+  --text-on-primary-strong-disabled: oklch(from white calc(l * 0.9) calc(c * 0.85) h);
+  --text-on-primary-strong-hover: oklch(from white calc(l * 0.9) calc(c * 0.85) h);
+
+  --text-on-primary-weak: oklch(from var(--primary-25) calc(l * 0.7) c h);
+  --text-on-primary-weak-hover: oklch(from var(--primary-25) calc(l * 1.5) calc(c * 0.5) h);
+  --text-on-primary-weak-disabled: oklch(from var(--primary-25) calc(l * 1.5) calc(c * 0.5) h);
+
+  --text-on-primary-outlined: oklch(from var(--primary-500) calc(l * 0.7) c h);
+  --text-on-primary-outlined-hover: oklch(from var(--primary-600) calc(l * 1.5) calc(c * 0.5) h);
+  --text-on-primary-outlined-disabled: oklch(from var(--primary-600) calc(l * 1.5) calc(c * 0.5) h);
+
+  --text-primary: var(--primary-25);
+  --text-primary-weak: oklch(from var(--primary-25) calc(l * 0.7) c h);
+  --text-primary-hover: oklch(from var(--primary-25) calc(l * 0.7) c h);
+  --text-primary-disabled: oklch(from var(--primary-25) calc(l * 1.5) calc(c * 0.5) h);
+
+  /* Stroke tokens - for borders */
+  --stroke-primary: var(--primary-600);
+  --stroke-primary-hover: oklch(from var(--primary-600) calc(l * 0.85) c h);
+  --stroke-primary-disabled: oklch(from var(--primary-600) calc(l * 1.5) calc(c * 0.8) h);
+
+  /* Ring tokens - for focus states */
+  --ring-primary: var(--primary-500);
+
+  /* Gradient tokens */
+  --gradient-primary-start: var(--primary-500);
+  --gradient-primary-end: var(--primary-700);
+  --gradient-primary-foreground: white;
+  --gradient-primary-disabled: oklch(from var(--primary-700) calc(l * 1.2) calc(c * 0.85) h);
+
 }
 
-.dark .pager-number.active {
-  background-color: white;
-  color: black;
+.dark,
+[data-theme="dark"],
+[data-theme="dark"] ::backdrop {
+  /* PRIMARY INTENT TOKENS (Dark Mode)
+       ----------------------------------------------------------------- */
+
+  /* Fill tokens */
+  --fill-primary-strong: white;
+  --fill-primary-strong-hover: oklch(from var(--gray-25) calc(l * 0.9) c h);
+  --fill-primary-strong-disabled: oklch(from var(--gray-25) calc(l * 0.85) calc(c * 0.85) h);
+
+  --fill-primary-weak: oklch(from var(--gray-25) calc(l * 0.4) calc(c * 0.5) h / 0.4);
+  --fill-primary-weak-hover: oklch(from var(--gray-25) calc(l * 0.3) calc(c * 0.5) h / 0.4);
+  --fill-primary-weak-disabled: oklch(from var(--gray-25) calc(l * 0.3) calc(c * 0.5) h / 0.4);
+
+  --fill-primary-outlined: transparent;
+  --fill-primary-outlined-hover: oklch(from var(--primary-500) calc(l * 2) calc(c * 0.2) h / 0.4);
+  --fill-primary-outlined-disabled: oklch(from var(--primary-500) calc(l * 2) calc(c * 0.2) h / 0.4);
+
+  /* Text tokens */
+  --text-on-primary-outlined: white;
+  --text-on-primary-outlined-hover: oklch(from white calc(l * 1.5) calc(c * 0.5) h);
+  --text-on-primary-outlined-disabled: oklch(from white calc(l * 1.5) calc(c * 0.5) h);
+
+  --text-on-primary-strong: black;
+  --text-on-primary-strong-hover: oklch(from black calc(l * 0.85) calc(c * 0.85) h);
+  --text-on-primary-strong-disabled: oklch(from black calc(l * 0.85) calc(c * 0.85) h);
+
+  --text-on-primary-weak: oklch(from var(--primary-500) calc(l * 0.7) c h);
+  --text-on-primary-weak-hover: oklch(from var(--primary-600) calc(l * 1.5) calc(c * 0.5) h);
+  --text-on-primary-weak-disabled: oklch(from var(--primary-600) calc(l * 1.5) calc(c * 0.5) h);
+
+  --text-primary: var(--primary-25);
+  --text-primary-weak: oklch(from var(--primary-25) calc(l * 0.7) c h);
+  --text-primary-hover: oklch(from var(--primary-25) calc(l * 0.7) c h);
+  --text-primary-disabled: oklch(from var(--primary-25) calc(l * 1.5) calc(c * 0.5) h);
+
+
+  /* Stroke tokens */
+  --stroke-primary: var(--primary-50);
+  --stroke-primary-hover: oklch(from var(--primary-50) calc(l * 1.1) c h);
+  --stroke-primary-disabled: oklch(from var(--primary-50) calc(l * 0.8) calc(c * 0.8) h);
+
+  /* Ring tokens */
+  --ring-primary: var(--primary-300);
+
+  /* Gradient tokens */
+  --gradient-primary-start: var(--primary-500);
+  --gradient-primary-end: var(--primary-700);
+  --gradient-primary-foreground: white;
+  --gradient-primary-disabled: oklch(from var(--primary-700) calc(l * 0.85) calc(c * 0.85) h);
 }
 
-/* Default (light mode) */
-::selection {
-  background-color: var(--gray-800);
-  color: white;
-}
+/* ===================================================================
+   * .NOT-DARK OVERRIDE
+   * .not-dark override: Forces light mode tokens by re-declaring :root values.
+   * This duplication is intentional - it ensures .not-dark always wins over .dark
+   * regardless of DOM order, without needing complex :not() selectors.
+   * Alternative approaches (revert-layer, :not() patterns) would be more fragile.
+  */
+.not-dark {
 
-/* Dark mode */
-.dark ::selection {
-  background-color: var(--gray-50);
-  color: #252424;
-}
+  /* Fill tokens - for solid backgrounds (filled variant) */
+  --fill-primary-strong: var(--primary-500);
+  --fill-primary-strong-hover: oklch(from var(--primary-500) calc(l * 0.9) c h);
+  --fill-primary-strong-disabled: oklch(from var(--primary-500) calc(l * 1.1) calc(c * 0.85) h);
 
-.button.primary {
-  --button: var(--primary-900);
-  --button-ring-color: var(--button);
-}
+  --fill-primary-weak: oklch(from var(--primary-300) calc(l * 1.5) calc(c * 0.2) h / 0.5);
+  --fill-primary-weak-hover: oklch(from var(--primary-300) calc(l * 1.35) calc(c * 0.2) h / 0.5);
+  --fill-primary-weak-disabled: oklch(from var(--primary-300) calc(l * 1.35) calc(c * 0.2) h / 0.5);
 
-.button.primary.filled {
-  --button-variant-filled: var(--button);
-  --button-variant-filled-foreground: white;
-  --button-variant-filled-hover: oklch(from var(--button) calc(l * 1.4) c h);
-}
+  --fill-primary-outlined: transparent;
+  --fill-primary-outlined-hover: oklch(from var(--primary-50) calc(l * 2) calc(c * 0.2) h / 0.4);
+  --fill-primary-outlined-disabled: oklch(from var(--primary-50) calc(l * 2) calc(c * 0.2) h / 0.4);
 
-.button.primary.outlined {
-  --button-variant-outlined: transparent;
-  --button-variant-outlined-foreground: var(--primary-700);
-  --button-variant-outlined-hover: oklch(from var(--button) calc(l * 8.35) calc(c * 0.2) h);
-  --button-variant-outlined-border: var(--primary-700);
-}
+  /* Text tokens */
+  --text-on-primary-strong: white;
+  --text-on-primary-strong-disabled: oklch(from white calc(l * 0.9) calc(c * 0.85) h);
+  --text-on-primary-strong-hover: oklch(from white calc(l * 0.9) calc(c * 0.85) h);
 
-.button.primary.gradient {
-  --button-variant-gradient-start: var(--primary-500);
-  --button-variant-gradient-end: var(--primary-700);
-  --button-variant-gradient-foreground: white;
-  --button-variant-gradient-hover: var(--gray-900);
-}
+  --text-on-primary-weak: oklch(from var(--primary-25) calc(l * 0.7) c h);
+  --text-on-primary-weak-hover: oklch(from var(--primary-25) calc(l * 1.5) calc(c * 0.5) h);
+  --text-on-primary-weak-disabled: oklch(from var(--primary-25) calc(l * 1.5) calc(c * 0.5) h);
 
-.dark {
-  .button.primary:not(:where([class~="not-dark"], [class~="not-dark"] *)) {
-    --button: white;
-    --button-ring-color: var(--button);
-  }
+  --text-on-primary-outlined: oklch(from var(--primary-500) calc(l * 0.7) c h);
+  --text-on-primary-outlined-hover: oklch(from var(--primary-600) calc(l * 1.5) calc(c * 0.5) h);
+  --text-on-primary-outlined-disabled: oklch(from var(--primary-600) calc(l * 1.5) calc(c * 0.5) h);
 
-  .button.primary.filled:not(:where([class~="not-dark"], [class~="not-dark"] *)) {
-    --button-variant-filled: var(--button);
-    --button-variant-filled-foreground: black;
-    --button-variant-filled-hover: oklch(from var(--button) calc(l * 0.95) c h);
-  }
+  --text-primary: var(--primary-25);
+  --text-primary-weak: oklch(from var(--primary-25) calc(l * 0.7) c h);
+  --text-primary-hover: oklch(from var(--primary-25) calc(l * 0.7) c h);
+  --text-primary-disabled: oklch(from var(--primary-25) calc(l * 1.5) calc(c * 0.5) h);
 
-  .button.primary.outlined:not(:where([class~="not-dark"], [class~="not-dark"] *)) {
-    --button-variant-outlined-foreground: var(--primary-50);
-    --button-variant-outlined-hover: oklch(from var(--button) calc(l * 0.22) calc(c * 0.1) h);
-    --button-variant-outlined-border: var(--primary-100);
-  }
+  /* Stroke tokens - for borders */
+  --stroke-primary: var(--primary-600);
+  --stroke-primary-hover: oklch(from var(--primary-600) calc(l * 0.85) c h);
+  --stroke-primary-disabled: oklch(from var(--primary-600) calc(l * 1.5) calc(c * 0.8) h);
 
-  .primary.gradient:not(:where([class~="not-dark"], [class~="not-dark"] *)) {
-    --button-variant-gradient-start: var(--primary-25);
-    --button-variant-gradient-end: var(--primary-50);
-    --button-variant-gradient-foreground: black;
-    --button-variant-gradient-hover: var(--gray-100);
-  }
+  /* Ring tokens - for focus states */
+  --ring-primary: var(--primary-500);
+
+  /* Gradient tokens */
+  --gradient-primary-start: var(--primary-500);
+  --gradient-primary-end: var(--primary-700);
+  --gradient-primary-foreground: white;
+  --gradient-primary-disabled: oklch(from var(--primary-700) calc(l * 1.2) calc(c * 0.85) h);
+
 }
