@@ -25,7 +25,7 @@ export default async function HomePage({
         <div className="prose">
           <h1 className="text-center mb-8">Modulus</h1>
         </div>
-        <p>Home</p>
+        <p className="text-center">More soon...</p>
       </Container>
     </Section>
   )

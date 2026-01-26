@@ -1,13 +1,17 @@
 'use client'
 
-import cx from 'classnames'
-import { usePathname } from 'next/navigation'
 import { Suspense, useEffect, useState } from 'react'
+import { usePathname } from 'next/navigation'
+
+import { Hamburger } from '@infonomic/uikit/react'
+import cx from 'classnames'
+
 import { ProgressBar } from '@/context/progress-bar-provider'
 import { LanguageMenu } from '@/i18n/components/language-menu'
+import { MainMenu } from '@/ui/components/main-menu'
+import { MobileMenu } from '@/ui/components/mobile-menu'
 import { ThemeSwitch } from '@/ui/theme/theme-switch'
 import { Branding } from './branding'
-
 import type { Locale } from '@/i18n/i18n-config'
 
 interface AppBarProps {
@@ -20,6 +24,10 @@ export const AppBarFront = ({ className, lng, ref, ...other }: AppBarProps) => {
   const pathName = usePathname()
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
   const [hasScrolled, setHasScrolled] = useState(false)
+  const [lastScrollY, setLastScrollY] = useState(0)
+  const [hasScrolledDown, setHasScrolledDown] = useState(false)
+
+  const SCROLL_THRESHOLD = 50 // Minimum distance to trigger show/hide logic
 
   const handleToggleMobileMenu = (event: React.MouseEvent<HTMLButtonElement> | null): void => {
     if (event != null) event.stopPropagation()
@@ -35,20 +43,25 @@ export const AppBarFront = ({ className, lng, ref, ...other }: AppBarProps) => {
     setMobileMenuOpen(false)
   }
 
-  useEffect(() => {
-    window.addEventListener('click', handleWindowClick)
-    return () => {
-      window.removeEventListener('click', handleWindowClick)
-    }
-  })
-
   const handleScroll = (): void => {
+    const currentScrollY = window.scrollY
+    // Check if scroll distance exceeds the threshold
+    if (Math.abs(currentScrollY - lastScrollY) > SCROLL_THRESHOLD) {
+      if (currentScrollY > lastScrollY && currentScrollY > 0) {
+        // User scrolled down
+        setHasScrolledDown(true)
+      } else {
+        // User scrolled up
+        setHasScrolledDown(false)
+      }
+      setLastScrollY(currentScrollY) // Update lastScrollY after logic
+    }
+
     // TODO - refine for correct locale detection
-    // For now home / and anything with a two character path / locale will
-    // work.
+    // For now home / and anything with a two character path
     if (pathName.length <= 3) {
       const position = window.scrollY
-      if (position > 20) {
+      if (position > 100) {
         setHasScrolled(true)
       } else {
         setHasScrolled(false)
@@ -57,8 +70,10 @@ export const AppBarFront = ({ className, lng, ref, ...other }: AppBarProps) => {
   }
 
   useEffect(() => {
+    window.addEventListener('click', handleWindowClick)
     window.addEventListener('scroll', handleScroll, { passive: true })
     return () => {
+      window.removeEventListener('click', handleWindowClick)
       window.removeEventListener('scroll', handleScroll)
     }
   })
@@ -98,10 +113,19 @@ export const AppBarFront = ({ className, lng, ref, ...other }: AppBarProps) => {
           <div className="lg:flex-initial mr-auto">
             <Branding lng={lng} hasScrolled={hasScrolled} pathName={pathName} />
           </div>
-          <Suspense>
+          <MainMenu lng={lng} color={appBarTextColor} />
+          <div className="flex items-center gap-4 lg:gap-6 ml-auto">
             <LanguageMenu lng={lng} color={appBarTextColor} />
-          </Suspense>
-          <ThemeSwitch className="mr-0" />
+            <ThemeSwitch />
+            <div className="lg:hidden">
+              <Hamburger
+                color={mobileMenuOpen ? hamburgerColorMobileMenuOpen : hamburgerColor}
+                open={mobileMenuOpen}
+                onChange={handleToggleMobileMenu}
+              />
+            </div>
+            <MobileMenu lng={lng} open={mobileMenuOpen} onClose={handleMobileMenuClose} />
+          </div>
         </div>
       </header>
     </>
