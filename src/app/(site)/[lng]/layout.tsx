@@ -1,3 +1,5 @@
+import type { Metadata, Viewport } from 'next'
+
 import { getTranslations } from '@/i18n/server'
 import { AppBarFront } from '@/ui/components/app-bar-front'
 import { ConsoleCredit } from '@/ui/components/console-credit'
@@ -5,16 +7,20 @@ import { SiteFooter } from '@/ui/components/site-footer'
 import { EarlyThemeDetector } from '@/ui/theme/early-theme-detector'
 import { Providers } from './providers'
 
-import type { Metadata, Viewport } from 'next'
-
-import './global.css'
+/**
+ * Global style sheet, inside of which are uikit,
+ * tailwind, app and other imports. Wrapping them in
+ * global.css reduces the number of CSS postcss pipeline
+ * iterations to one (as opposed to O(n)).
+ */
+import '@/ui/styles/global.css'
 
 import type { Locale } from '@/i18n/i18n-config'
 
 export const metadata: Metadata = {
-  title: 'Modulus Registry',
+  title: 'Modulus',
   description:
-    'Modulus Learning registry application that is used to announce all known Modulus installations.',
+    'Modulus is an assignment-grade database designed to track progress on Ximera assignments using time-series data and latest page-state snapshots. Its core design principle is simple: Modulus helps instructors understand their assignments.',
 }
 
 export default async function RootLayout({

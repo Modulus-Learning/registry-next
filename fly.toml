@@ -3,34 +3,34 @@
 # See https://fly.io/docs/reference/configuration/ for information about how to use this file.
 #
 
-app = 'modulus-registry'
+app = 'modulus-learning'
 primary_region = 'sin'
 
 [build]
-  dockerfile = '_docker/web/production/Dockerfile'
+dockerfile = '_docker/web/production/Dockerfile'
 
 [env]
-  PORT = '3000'
-  SITE_NAME = 'Modulus Registry'
-  SITE_DESCRIPTION = 'Modulus Learning registry application that is used to announce all known Modulus installations.'
-  PUBLIC_SERVER_URL = 'http://localhost:3000'
-  GITHUB_REGISTRY_DATA_URL = 'https://raw.githubusercontent.com/Modulus-Learning/registry-data/refs/heads/main/db.json'
-  CSP_ENABLED = 'false'
-  SYSTEM_EMAIL_FROM_ADDRESS = 'Modulus Learning <info@infonomic.io>'
-  CONTACT_SUBMISSION_FROM_ADDRESS = 'Modulus Learning <info@infonomic.io>'
-  SMTP_HOST = '127.0.0.1'
-  SMTP_PORT = '1025'
-  SMTP_SECURE = 'false'
+PORT = '3000'
+SITE_NAME = 'Modulus Learning'
+SITE_DESCRIPTION = 'Modulus Learning registry application that is used to announce all known Modulus installations.'
+PUBLIC_SERVER_URL = 'http://localhost:3000'
+GITHUB_REGISTRY_DATA_URL = 'https://raw.githubusercontent.com/Modulus-Learning/registry-data/refs/heads/main/db.json'
+CSP_ENABLED = 'false'
+SYSTEM_EMAIL_FROM_ADDRESS = 'Modulus Learning <info@infonomic.io>'
+CONTACT_SUBMISSION_FROM_ADDRESS = 'Modulus Learning <info@infonomic.io>'
+SMTP_HOST = '127.0.0.1'
+SMTP_PORT = '1025'
+SMTP_SECURE = 'false'
 
 [http_service]
-  internal_port = 8000
-  force_https = true
-  auto_stop_machines = 'off'
-  auto_start_machines = true
-  min_machines_running = 1
-  processes = ['app']
+internal_port = 8000
+force_https = true
+auto_stop_machines = 'off'
+auto_start_machines = true
+min_machines_running = 1
+processes = ['app']
 
 [[vm]]
-  memory = '512mb'
-  cpu_kind = 'shared'
-  cpus = 1
+memory = '512mb'
+cpu_kind = 'shared'
+cpus = 1

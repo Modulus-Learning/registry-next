@@ -96,7 +96,6 @@
   --canvas-900: oklch(from var(--canvas-base) calc(l * 0.3) c h);
   --canvas-950: oklch(from var(--canvas-base) calc(l * 0.225) c h);
 
-
   /* Fill tokens - for solid backgrounds (filled variant) */
   --fill-primary-strong: var(--primary-500);
   --fill-primary-strong-hover: oklch(from var(--primary-500) calc(l * 0.9) c h);
@@ -141,7 +140,6 @@
   --gradient-primary-end: var(--primary-700);
   --gradient-primary-foreground: white;
   --gradient-primary-disabled: oklch(from var(--primary-700) calc(l * 1.2) calc(c * 0.85) h);
-
 }
 
 .dark,
@@ -181,7 +179,6 @@
   --text-primary-hover: oklch(from var(--primary-25) calc(l * 0.7) c h);
   --text-primary-disabled: oklch(from var(--primary-25) calc(l * 1.5) calc(c * 0.5) h);
 
-
   /* Stroke tokens */
   --stroke-primary: var(--primary-50);
   --stroke-primary-hover: oklch(from var(--primary-50) calc(l * 1.1) c h);
@@ -205,7 +202,6 @@
    * Alternative approaches (revert-layer, :not() patterns) would be more fragile.
   */
 .not-dark {
-
   /* Fill tokens - for solid backgrounds (filled variant) */
   --fill-primary-strong: var(--primary-500);
   --fill-primary-strong-hover: oklch(from var(--primary-500) calc(l * 0.9) c h);
@@ -250,5 +246,4 @@
   --gradient-primary-end: var(--primary-700);
   --gradient-primary-foreground: white;
   --gradient-primary-disabled: oklch(from var(--primary-700) calc(l * 1.2) calc(c * 0.85) h);
-
 }

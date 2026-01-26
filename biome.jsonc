@@ -1,5 +1,5 @@
 {
-  "$schema": "https://biomejs.dev/schemas/2.2.0/schema.json",
+  "$schema": "https://biomejs.dev/schemas/2.3.12/schema.json",
   "vcs": {
     "enabled": true,
     "clientKind": "git",
@@ -7,7 +7,8 @@
   },
   "files": {
     "ignoreUnknown": false,
-    "includes": ["**", "!**/(payload)", "!**/_payload", "!**/tailwind.css"]
+    "includes": ["**", "!**/(payload)", "!**/payload-types.ts", "!**/tailwind.css"]
+    // "includes": ["**", "!**/(payload)", "!**/_payload", "!**/payload-types.ts", "!**/tailwind.css"]
   },
   "formatter": {
     "enabled": true,
@@ -19,15 +20,7 @@
     "lineWidth": 100,
     "attributePosition": "auto",
     "bracketSpacing": true,
-    "includes": [
-      "**",
-      "!**/dist",
-      "!**/build",
-      "!**/node_modules",
-      "!**/.cache",
-      "!**/.next",
-      "!**/.output"
-    ]
+    "includes": ["**", "!**/dist", "!**/build", "!**/node_modules", "!**/.cache"]
   },
   "assist": {
     "enabled": true,
@@ -37,18 +30,17 @@
           "level": "on",
           "options": {
             "groups": [
-              {
-                "type": false
-              },
               ":NODE:",
               ":URL:",
               ":BLANK_LINE:",
+              ["react"],
+              ["next/**", "@tanstack/**"],
+              ":BLANK_LINE:",
               ":PACKAGE:",
               ":BLANK_LINE:",
-              ["react"],
-              ":BLANK_LINE:",
-              ["next/**", "@tanstack/**"],
-              ":BLANK_LINE:"
+              {
+                "type": false
+              }
             ]
           }
         }
@@ -65,16 +57,7 @@
       },
       "style": {
         "noNonNullAssertion": "info",
-        "useSelfClosingElements": "off",
-        "noParameterAssign": "error",
-        "useAsConstAssertion": "error",
-        "useDefaultParameterLast": "error",
-        "useEnumInitializers": "error",
-        "useSingleVarDeclarator": "error",
-        "noUnusedTemplateLiteral": "error",
-        "useNumberNamespace": "error",
-        "noInferrableTypes": "error",
-        "noUselessElse": "error"
+        "useSelfClosingElements": "off"
       },
       "suspicious": {
         "noExplicitAny": "off",
@@ -82,7 +65,8 @@
         "noArrayIndexKey": "warn"
       },
       "performance": {
-        "noDelete": "off"
+        "noDelete": "off",
+        "noImgElement": "off"
       },
       "a11y": {
         "useSemanticElements": "off"
