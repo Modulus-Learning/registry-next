@@ -59,6 +59,12 @@ export function MainMenu({ lng, color }: { lng: Locale; color: string }): React.
           </LinkItem>
         </NavigationMenu.Item>
 
+        <NavigationMenu.Item className="px-[1px]">
+          <LinkItem href="/about" lng={lng} color={color}>
+            About
+          </LinkItem>
+        </NavigationMenu.Item>
+
         <NavigationMenu.Indicator className="data-[state=visible]:animate-fadeIn data-[state=hidden]:animate-fadeOut top-full z-[1] flex h-[10px] items-end justify-center overflow-hidden transition-[width,transform_250ms_ease]">
           <div className="relative top-[70%] h-[10px] w-[10px] rotate-[45deg] rounded-tl-[2px] bg-white" />
         </NavigationMenu.Indicator>

@@ -1,10 +1,12 @@
 'use client'
 
 import Image from 'next/image'
+import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 
-import { Accordion, ChevronDownIcon, HomeIcon } from '@infonomic/uikit/react'
+import { Accordion, Button, ChevronDownIcon, HomeIcon } from '@infonomic/uikit/react'
 import cx from 'classnames'
+import { ArrowRight, ExternalLink } from 'lucide-react'
 import { useSwipeable } from 'react-swipeable'
 
 import { useLangNavigation } from '@/i18n/hooks/use-lang-navigation'
@@ -21,6 +23,7 @@ import './mobile-menu.css'
 interface MenuItem {
   title: string
   path: string
+  target?: string
   children: MenuItem[] | null
 }
 
@@ -32,12 +35,18 @@ const menuItems: MenuItem[] = [
   },
   {
     title: 'Ximera',
-    path: '/ximera',
+    path: 'https://ximera.osu.edu/',
+    target: '_blank',
     children: null,
   },
   {
     title: 'Registry',
     path: '/registry',
+    children: null,
+  },
+  {
+    title: 'About',
+    path: '/about',
     children: null,
   },
 ]
@@ -117,7 +126,8 @@ export function MobileMenu({
                     className="mobile-menu-button"
                     onClick={handleMenuItemClick('/')}
                   >
-                    <HomeIcon className="mb-[-1px]" />&nbsp;
+                    <HomeIcon className="mb-[-1px]" />
+                    &nbsp;
                     <span>{t('Home')}</span>
                   </Accordion.Trigger>
                 </li>
@@ -149,25 +159,39 @@ export function MobileMenu({
                           )}
                         </button>
                       ) : (
-                        <button
-                          type="button"
-                          className={cx('mobile-menu-button', {
-                            active: getActive(pathname, item.path),
-                          })}
-                          onClick={
-                            item?.children == null || item?.children?.length === 0
-                              ? handleMenuItemClick(item.path)
-                              : undefined
-                          }
-                        >
-                          {t(item.title)}
-                          {item?.children != null && item?.children?.length > 0 && (
-                            <ChevronDownIcon
-                              className="ml-auto -rotate-90 text-violet10 ease-[cubic-bezier(0.87,_0,_0.13,_1)] transition-transform duration-300 group-data-[state=open]:rotate-0"
-                              aria-hidden
-                            />
-                          )}
-                        </button>
+                        item?.target === '_blank' ? (
+                          <a
+                            href={item.path}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className={cx('mobile-menu-button', {
+                              active: getActive(pathname, item.path),
+                            })}
+                            onClick={onClose}
+                          >
+                            {t(item.title)}
+                          </a>
+                        ) : (
+                          <button
+                            type="button"
+                            className={cx('mobile-menu-button', {
+                              active: getActive(pathname, item.path),
+                            })}
+                            onClick={
+                              item?.children == null || item?.children?.length === 0
+                                ? handleMenuItemClick(item.path)
+                                : undefined
+                            }
+                          >
+                            {t(item.title)}
+                            {item?.children != null && item?.children?.length > 0 && (
+                              <ChevronDownIcon
+                                className="ml-auto -rotate-90 text-violet10 ease-[cubic-bezier(0.87,_0,_0.13,_1)] transition-transform duration-300 group-data-[state=open]:rotate-0"
+                                aria-hidden
+                              />
+                            )}
+                          </button>
+                        )
                       )}
                     </Accordion.Trigger>
                     {item?.children != null && item?.children?.length > 0 && (
@@ -195,6 +219,30 @@ export function MobileMenu({
             </ul>
           </div>
         </Accordion.Root>
+        {/* CTAs */}
+        <div className="flex flex-col gap-4 max-w-[300px] mx-auto mt-6">
+          <Button
+            asChild
+            size="lg"
+            className="bg-primary text-primary-foreground hover:bg-primary/90 w-full sm:w-auto"
+          >
+            <Link href="#">
+              View on GitHub
+              <ExternalLink className="ml-2 h-4 w-4" />
+            </Link>
+          </Button>
+          <Button
+            asChild
+            variant="outlined"
+            size="lg"
+            className="w-full sm:w-auto border-border text-foreground hover:bg-secondary bg-transparent"
+          >
+            <Link href="https://ximera.osu.edu/" target="_blank" rel="noopener noreferrer">
+              Learn about Ximera
+              <ArrowRight className="ml-2 h-4 w-4" />
+            </Link>
+          </Button>
+        </div>
       </div>
     </div>
   )
