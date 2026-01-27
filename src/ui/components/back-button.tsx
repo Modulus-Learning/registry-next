@@ -1,7 +1,8 @@
 'use client'
 
-import { Button, ReturnIcon } from '@infonomic/uikit/react'
 import { useRouter } from 'next/navigation'
+
+import { Button, ReturnIcon } from '@infonomic/uikit/react'
 
 export function BackButton() {
   const router = useRouter()
@@ -12,7 +13,7 @@ export function BackButton() {
         router.back()
       }}
     >
-      Back <ReturnIcon width="18px" height="18px" svgClassName="fill-white stroke-white" />
+      Back <ReturnIcon width="18px" height="18px" svgClassName="text-white dark:text-black" />
     </Button>
   )
 }
