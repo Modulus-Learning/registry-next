@@ -1,9 +1,8 @@
 // https://nextjs.org/docs/app/building-your-application/configuring/content-security-policy
 
-import { getCSPHeader, getServerConfig } from '@/config'
-
 import type { NextFetchEvent, NextRequest } from 'next/server'
 
+import { getCSPHeader, getServerConfig } from '@/config'
 import type { MiddlewareFactory } from './@types'
 
 export const withCSP: MiddlewareFactory = (next) => {

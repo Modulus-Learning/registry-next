@@ -1,5 +1,6 @@
 'use client'
 
+import { useEffect } from 'react'
 /**
  * ClientThemeDetector is a fallback theme detector used in cases where
  * the application may force an HTML shell component re-render, but NOT trigger
@@ -8,7 +9,6 @@
  * a flash of unstyled content (FOUC) if the theme is changed here.
  */
 import { usePathname } from 'next/navigation'
-import { useEffect } from 'react'
 
 export function ClientThemeDetector({ force }: { force?: 'light' | 'dark' }) {
   const pathname = usePathname()

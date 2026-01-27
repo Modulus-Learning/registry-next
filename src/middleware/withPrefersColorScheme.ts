@@ -1,4 +1,4 @@
-import { type NextFetchEvent, NextMiddleware, type NextRequest, NextResponse } from 'next/server'
+import type { NextFetchEvent, NextRequest } from 'next/server'
 
 import type { MiddlewareFactory } from './@types'
 

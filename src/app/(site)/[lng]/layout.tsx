@@ -1,4 +1,4 @@
-import type { Metadata, Viewport } from 'next'
+import type { Metadata } from 'next'
 
 import { getTranslations } from '@/i18n/server'
 import { AppBarFront } from '@/ui/components/app-bar-front'

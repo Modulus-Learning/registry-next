@@ -1,9 +1,10 @@
+import type { NextRequest } from 'next/server'
+
 import { match } from '@formatjs/intl-localematcher'
 import Negotiator from 'negotiator'
+
 import { i18nConfig, type Locale } from '@/i18n/i18n-config'
 import { localeFromPath } from '@/i18n/utils'
-
-import type { NextRequest } from 'next/server'
 
 /**
  * Current detection strategy is 1) cookie, 2) path, 3) user agent, 4) default

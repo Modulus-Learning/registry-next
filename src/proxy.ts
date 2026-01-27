@@ -15,13 +15,7 @@ import { withI18n } from './middleware/withI18n'
 import { withNonce } from './middleware/withNonce'
 import { withPrefersColorScheme } from './middleware/withPrefersColorScheme'
 
-export default proxy([
-  withCurrentPath,
-  withNonce,
-  withCSP,
-  withPrefersColorScheme,
-  withI18n,
-])
+export default proxy([withCurrentPath, withNonce, withCSP, withPrefersColorScheme, withI18n])
 
 // https://nextjs.org/docs/app/building-your-application/routing/middleware#matcher
 export const config = {

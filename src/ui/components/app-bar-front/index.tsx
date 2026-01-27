@@ -7,7 +7,6 @@ import { Hamburger } from '@infonomic/uikit/react'
 import cx from 'classnames'
 
 import { ProgressBar } from '@/context/progress-bar-provider'
-import { LanguageMenu } from '@/i18n/components/language-menu'
 import { MainMenu } from '@/ui/components/main-menu'
 import { MobileMenu } from '@/ui/components/mobile-menu'
 import { ThemeSwitch } from '@/ui/theme/theme-switch'
@@ -25,7 +24,7 @@ export const AppBarFront = ({ className, lng, ref, ...other }: AppBarProps) => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
   const [hasScrolled, setHasScrolled] = useState(false)
   const [lastScrollY, setLastScrollY] = useState(0)
-  const [hasScrolledDown, setHasScrolledDown] = useState(false)
+  const [_hasScrolledDown, setHasScrolledDown] = useState(false)
 
   const SCROLL_THRESHOLD = 50 // Minimum distance to trigger show/hide logic
 
@@ -88,7 +87,8 @@ export const AppBarFront = ({ className, lng, ref, ...other }: AppBarProps) => {
       ? 'text-black fill-black dark:text-white dark:fill-white'
       : 'text-black fill-black dark:text-white dark:fill-white'
 
-  const hamburgerColor = 'bg-black before:bg-black after:bg-black dark:bg-white dark:before:bg-white dark:after:bg-white'
+  const hamburgerColor =
+    'bg-black before:bg-black after:bg-black dark:bg-white dark:before:bg-white dark:after:bg-white'
 
   return (
     <>

@@ -1,7 +1,9 @@
 'use client'
 
-import { usePathname } from 'next/navigation'
+import type { ReactNode } from 'react'
 import { createContext, useCallback, useContext, useEffect, useMemo, useState } from 'react'
+import { usePathname } from 'next/navigation'
+
 import { getTheme as getThemeApi, type ThemeSettings } from './get-theme.ts'
 import { setTheme as setThemeApi } from './set-theme.ts'
 import {
@@ -12,8 +14,6 @@ import {
   Theme,
   ThemeSource,
 } from './utils.ts'
-
-import type { ReactNode } from 'react'
 
 // ThemeContext
 interface ThemeContextType {

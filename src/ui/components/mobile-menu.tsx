@@ -79,17 +79,17 @@ export function MobileMenu({
 
   const handleMenuItemClick =
     (href: string | null) =>
-      (event: any): void => {
-        if (
-          event != null &&
-          event.type === 'keydown' &&
-          (event.key === 'Tab' || event.key === 'Shift')
-        ) {
-          return
-        }
-        if (onClose != null) onClose()
-        if (href != null) navigate({ href, smoothScrollToTop: true })
+    (event: any): void => {
+      if (
+        event != null &&
+        event.type === 'keydown' &&
+        (event.key === 'Tab' || event.key === 'Shift')
+      ) {
+        return
       }
+      if (onClose != null) onClose()
+      if (href != null) navigate({ href, smoothScrollToTop: true })
+    }
 
   const handlers = useSwipeable({
     onSwipedRight: () => {
@@ -158,40 +158,38 @@ export function MobileMenu({
                             />
                           )}
                         </button>
+                      ) : item?.target === '_blank' ? (
+                        <a
+                          href={item.path}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className={cx('mobile-menu-button', {
+                            active: getActive(pathname, item.path),
+                          })}
+                          onClick={onClose}
+                        >
+                          {t(item.title)}
+                        </a>
                       ) : (
-                        item?.target === '_blank' ? (
-                          <a
-                            href={item.path}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className={cx('mobile-menu-button', {
-                              active: getActive(pathname, item.path),
-                            })}
-                            onClick={onClose}
-                          >
-                            {t(item.title)}
-                          </a>
-                        ) : (
-                          <button
-                            type="button"
-                            className={cx('mobile-menu-button', {
-                              active: getActive(pathname, item.path),
-                            })}
-                            onClick={
-                              item?.children == null || item?.children?.length === 0
-                                ? handleMenuItemClick(item.path)
-                                : undefined
-                            }
-                          >
-                            {t(item.title)}
-                            {item?.children != null && item?.children?.length > 0 && (
-                              <ChevronDownIcon
-                                className="ml-auto -rotate-90 text-violet10 ease-[cubic-bezier(0.87,_0,_0.13,_1)] transition-transform duration-300 group-data-[state=open]:rotate-0"
-                                aria-hidden
-                              />
-                            )}
-                          </button>
-                        )
+                        <button
+                          type="button"
+                          className={cx('mobile-menu-button', {
+                            active: getActive(pathname, item.path),
+                          })}
+                          onClick={
+                            item?.children == null || item?.children?.length === 0
+                              ? handleMenuItemClick(item.path)
+                              : undefined
+                          }
+                        >
+                          {t(item.title)}
+                          {item?.children != null && item?.children?.length > 0 && (
+                            <ChevronDownIcon
+                              className="ml-auto -rotate-90 text-violet10 ease-[cubic-bezier(0.87,_0,_0.13,_1)] transition-transform duration-300 group-data-[state=open]:rotate-0"
+                              aria-hidden
+                            />
+                          )}
+                        </button>
                       )}
                     </Accordion.Trigger>
                     {item?.children != null && item?.children?.length > 0 && (

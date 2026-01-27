@@ -1,6 +1,6 @@
 import { expect, test } from 'vitest'
 
-import { decrypt, decryptSync, encrypt, encryptSync } from './encryption-node'
+import { decryptSync, encryptSync } from './encryption-node'
 
 test('should encrypt decrypt plaintext', () => {
   const text =

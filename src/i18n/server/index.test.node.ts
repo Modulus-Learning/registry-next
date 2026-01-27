@@ -1,4 +1,5 @@
 import { describe, expect, test, vi } from 'vitest'
+
 import { getTranslations, useTranslations } from '.'
 
 // Hoisted mock, without any returned mock functions.

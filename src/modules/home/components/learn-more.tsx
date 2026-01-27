@@ -19,8 +19,8 @@ export function LearnMore() {
               Explore Modulus Today
             </h2>
             <p className="text-muted-foreground text-lg mb-8 max-w-2xl mx-auto text-pretty">
-              You can view the source code and additional documentation for the project on GitHub. Full documentation and deployment guides are
-              coming soon.
+              You can view the source code and additional documentation for the project on GitHub.
+              Full documentation and deployment guides are coming soon.
             </p>
 
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4">

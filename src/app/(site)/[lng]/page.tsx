@@ -2,7 +2,6 @@ import { FeatureCards } from '@/modules/home/components/feature-cards'
 import { Hero } from '@/modules/home/components/hero'
 import { LearnMore } from '@/modules/home/components/learn-more'
 import { Ximera } from '@/modules/home/components/ximera'
-import { Branding } from '@/ui/components/branding'
 import type { Locale } from '@/i18n/i18n-config'
 
 // // Use this to debug ISR

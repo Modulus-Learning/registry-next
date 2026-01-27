@@ -1,10 +1,5 @@
 'use client'
 
-import Image from 'next/image'
-
-import logoBlack from '@/images/logo/modulus-logo-symbol-black.svg'
-import logoWhite from '@/images/logo/modulus-logo-symbol-white.svg'
-
 import './branding.css'
 
 export function Branding() {

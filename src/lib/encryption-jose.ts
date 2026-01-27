@@ -43,7 +43,8 @@
 export type Awaitable<T> = T | PromiseLike<T>
 
 import { hkdf } from '@panva/hkdf'
-import { EncryptJWT, base64url, calculateJwkThumbprint, jwtDecrypt } from 'jose'
+import { base64url, calculateJwkThumbprint, EncryptJWT, jwtDecrypt } from 'jose'
+
 // import { SessionStore } from './lib/utils/cookie.js'
 // import type { LoggerInstance } from './lib/utils/logger.js'
 // import { MissingSecret } from './errors.js'

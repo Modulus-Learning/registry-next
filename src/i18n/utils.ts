@@ -1,4 +1,4 @@
-import { type Locale, i18nConfig } from './i18n-config'
+import { i18nConfig, type Locale } from './i18n-config'
 
 export const pathWithoutLocale = (pathname: string): string => {
   const pathnameIsMissingLocale = i18nConfig.locales.every(

@@ -1,7 +1,9 @@
 'use client'
+
 import { useEffect } from 'react'
-import type { Breadcrumb } from './@types'
+
 import { useBreadcrumbs } from './breadcrumbs-provider'
+import type { Breadcrumb } from './@types'
 
 export function BreadcrumbsClient({
   breadcrumbs,

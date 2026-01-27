@@ -12,7 +12,7 @@ export function SiteFooter({
   lng: string
   sticky?: boolean
 }): React.JSX.Element {
-  const t = (): void => { }
+  const _t = (): void => {}
 
   return (
     <div className={cx('z-10 bottom-0 left-0 w-full overflow-hidden', { sticky })}>

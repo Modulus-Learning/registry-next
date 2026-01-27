@@ -44,7 +44,7 @@ export const decrypt = (secretKey: string, ciphertext: string) => {
       const ivBuiffer = Buffer.from(iv, format)
       const keyBuffer = crypto.pbkdf2Sync(secretKey, salt, iterations, keylen, 'sha512')
       const decipher = crypto.createDecipheriv('aes-256-cfb', keyBuffer, ivBuiffer)
-      // @ts-ignore
+      // @ts-expect-error
       let decrypted = decipher.update(secret, format) as string
       decrypted += decipher.final(format)
       resolve(decrypted)
@@ -61,7 +61,7 @@ export const decryptSync = (secretKey: string, ciphertext: string) => {
   const ivBuffer = Buffer.from(iv, format)
   const keyBuffer = crypto.pbkdf2Sync(secretKey, salt, iterations, keylen, 'sha512')
   const decipher = crypto.createDecipheriv('aes-256-cfb', keyBuffer, ivBuffer)
-  // @ts-ignore
+  // @ts-expect-error
   let decrypted = decipher.update(secret, format) as string
   decrypted += decipher.final(format)
   return decrypted

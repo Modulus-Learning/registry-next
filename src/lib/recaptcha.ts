@@ -1,4 +1,4 @@
-import { type Logger, stdSerializers } from 'pino'
+import type { Logger } from 'pino'
 import { request } from 'undici'
 
 interface RecaptchaResult {

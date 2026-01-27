@@ -92,8 +92,9 @@ export function HeroAnimation() {
           <div className="relative">
             <span className="text-sm text-muted-foreground mb-2 block">Your answer:</span>
             <div
-              className={`flex items-center gap-3 bg-input border rounded-lg px-4 py-3 transition-all duration-300 ${showCheckmark ? 'border-green-500' : 'border-border'
-                }`}
+              className={`flex items-center gap-3 bg-input border rounded-lg px-4 py-3 transition-all duration-300 ${
+                showCheckmark ? 'border-green-500' : 'border-border'
+              }`}
             >
               <span className="text-muted-foreground font-mono">x =</span>
               <span
@@ -105,8 +106,9 @@ export function HeroAnimation() {
 
               {/* Checkmark */}
               <div
-                className={`ml-auto transition-all duration-500 ${showCheckmark ? 'opacity-100 scale-100' : 'opacity-0 scale-0'
-                  }`}
+                className={`ml-auto transition-all duration-500 ${
+                  showCheckmark ? 'opacity-100 scale-100' : 'opacity-0 scale-0'
+                }`}
               >
                 <div className="h-8 w-8 rounded-full bg-green-500 flex items-center justify-center">
                   <Check className="h-5 w-5 text-background" strokeWidth={3} />
@@ -117,8 +119,9 @@ export function HeroAnimation() {
 
           {/* Success message */}
           <div
-            className={`mt-4 text-green-500 text-sm font-medium transition-all duration-500 ${showCheckmark ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-2'
-              }`}
+            className={`mt-4 text-green-500 text-sm font-medium transition-all duration-500 ${
+              showCheckmark ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-2'
+            }`}
           >
             Correct! Great work solving for x.
           </div>

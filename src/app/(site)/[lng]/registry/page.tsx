@@ -1,7 +1,6 @@
 import { Card, Container, Section } from '@infonomic/uikit/react'
 
 import { getRegistry } from '@/modules/registry/get-registry'
-import { Branding } from '@/ui/components/branding'
 import type { Locale } from '@/i18n/i18n-config'
 
 // Use this to debug ISR

@@ -10,7 +10,7 @@
     "build": "next build",
     "clean": "rm -rf node_modules .next build dist .turbo",
     "start": "next start",
-    "lint": "next lint",
+    "lint": "biome check --write --unsafe --diagnostic-level=error",
     "format": "biome format src/ --fix"
   },
   "dependencies": {

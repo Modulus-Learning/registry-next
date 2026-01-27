@@ -1,13 +1,8 @@
 'use client'
+
+import { createContext, type ReactNode, useContext, useEffect, useOptimistic, useRef } from 'react'
+
 import { domAnimation, LazyMotion, m, useMotionTemplate, useSpring } from 'motion/react'
-import React, {
-  createContext,
-  type ReactNode,
-  useContext,
-  useEffect,
-  useOptimistic,
-  useRef,
-} from 'react'
 
 /**
  * Internal context for the progress bar.

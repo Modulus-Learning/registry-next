@@ -1,7 +1,7 @@
 import cx from 'classnames'
+
 import { LangLink } from '@/i18n/components/lang-link'
 import { truncate } from '@/utils/utils.general.ts'
-
 import type { Breadcrumb } from './@types'
 
 export function Breadcrumbs({

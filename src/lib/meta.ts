@@ -13,7 +13,7 @@ export interface MetaOptions {
   }
 }
 
-export async function getMeta(lng: string, options: MetaOptions | null = null): Promise<any> {
+export async function getMeta(_lng: string, options: MetaOptions | null = null): Promise<any> {
   const { siteName, siteDescription, serverUrl: siteUrl } = getPublicConfig()
 
   return {

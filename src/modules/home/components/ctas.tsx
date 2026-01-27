@@ -1,7 +1,8 @@
 'use client'
 
-import { LangLink } from '@/i18n/components/lang-link'
 import { Button } from '@infonomic/uikit/react'
+
+import { LangLink } from '@/i18n/components/lang-link'
 
 export function Ctas({ lng }: { lng: string }) {
   return (

@@ -159,7 +159,10 @@
 
   --fill-primary-outlined: transparent;
   --fill-primary-outlined-hover: oklch(from var(--primary-500) calc(l * 2) calc(c * 0.2) h / 0.4);
-  --fill-primary-outlined-disabled: oklch(from var(--primary-500) calc(l * 2) calc(c * 0.2) h / 0.4);
+  --fill-primary-outlined-disabled: oklch(
+    from var(--primary-500) calc(l * 2) calc(c * 0.2) h /
+    0.4
+  );
 
   /* Text tokens */
   --text-on-primary-outlined: white;

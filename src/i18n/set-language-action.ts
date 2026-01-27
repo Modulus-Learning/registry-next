@@ -4,7 +4,7 @@ import { cookies } from 'next/headers'
 import { redirect } from 'next/navigation'
 
 import { getLogger } from '@/lib/logger'
-import { type Locale, i18nConfig } from './i18n-config'
+import { i18nConfig, type Locale } from './i18n-config'
 import { pathWithoutLocale } from './utils'
 
 export interface SetLanguageActionState {
@@ -13,7 +13,7 @@ export interface SetLanguageActionState {
 }
 
 export async function setLanguageAction(
-  prevState: SetLanguageActionState,
+  _prevState: SetLanguageActionState,
   formData: FormData
 ): Promise<SetLanguageActionState> {
   const logger = getLogger()
