@@ -15,12 +15,13 @@ import { Providers } from './providers'
  */
 import '@/ui/styles/global.css'
 
+import { StatusBanner } from '@/ui/components/status-banner'
 import type { Locale } from '@/i18n/i18n-config'
 
 export const metadata: Metadata = {
   title: 'Modulus',
   description:
-    'Modulus is an assignment-grade database designed to track progress on Ximera assignments using time-series data and latest page-state snapshots. Its core design principle is simple: Modulus helps instructors understand their assignments.',
+    'Modulus provides activity analytics for open education. An assignment-grade database designed to track progress on Ximera assignments.',
 }
 
 export default async function RootLayout({
@@ -43,6 +44,7 @@ export default async function RootLayout({
       <body className="bg-white dark:bg-canvas-900 relative">
         <Providers translations={translations}>
           <div className="layout-container relative flex min-h-screen flex-col">
+            {/* <StatusBanner /> */}
             <AppBarFront lng={lng} />
             <main className="flex flex-1 flex-col">{children}</main>
             <SiteFooter lng={lng} />

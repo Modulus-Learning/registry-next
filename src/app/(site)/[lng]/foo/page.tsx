@@ -1,7 +1,7 @@
 import { Card, Container, Section } from '@infonomic/uikit/react'
-import { Branding } from '@/modules/home/components/branding'
-import { getRegistry } from '@/modules/registry/get-registry'
 
+import { getRegistry } from '@/modules/registry/get-registry'
+import { Branding } from '@/ui/components/branding'
 import type { Locale } from '@/i18n/i18n-config'
 
 // https://nextjs.org/docs/app/guides/incremental-static-regeneration
