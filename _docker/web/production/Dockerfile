@@ -71,10 +71,10 @@ RUN corepack enable pnpm && pnpm run build
 # but the code hasn't changed.
 FROM base
 
-LABEL io.infonomic.name="Modulus Registry App" \
+LABEL io.infonomic.name="Modulus Learning" \
       io.infonomic.version="${VERSION}" \
       io.infonomic.maintainer="Anthony Bouch <anthony@infonomic.io>" \
-      io.infonomic.description="Modulus Learning registry application that is used to announce all known Modulus installations."
+      io.infonomic.description="Modulus Learning main website."
 
 ENV NODE_ENV=production
 ENV NEXT_TELEMETRY_DISABLED=1
