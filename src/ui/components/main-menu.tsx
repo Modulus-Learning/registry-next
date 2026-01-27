@@ -40,9 +40,17 @@ export function MainMenu({ lng, color }: { lng: Locale; color: string }): React.
         </NavigationMenu.Item>
 
         <NavigationMenu.Item className="px-[1px]">
-          <LinkItem href="/" lng={lng} color={color}>
+          <a
+            href="https://ximera.osu.edu/"
+            target="_blank"
+            rel="noopener"
+            className={cx(
+              'block px-3 py-2 text-[1rem] font-medium leading-none no-underline',
+              'outline-none rounded-sm focus:shadow-[0_0_0_1px]'
+            )}
+          >
             Ximera
-          </LinkItem>
+          </a>
         </NavigationMenu.Item>
 
         <NavigationMenu.Item className="px-[1px]">

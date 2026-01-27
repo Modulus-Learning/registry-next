@@ -1,13 +1,13 @@
 'use client'
 
-import cx from 'classnames'
+import type React from 'react'
 import Image from 'next/image'
+
+import cx from 'classnames'
+
 import { LangLink } from '@/i18n/components/lang-link'
 import logoBlack from '@/images/logo/modulus-logo-black.svg'
 import logoWhite from '@/images/logo/modulus-logo-white.svg'
-
-import type React from 'react'
-
 import type { Locale } from '@/i18n/i18n-config'
 
 export function Branding({

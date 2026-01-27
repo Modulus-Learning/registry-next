@@ -19,8 +19,7 @@ export function LearnMore() {
               Explore Modulus Today
             </h2>
             <p className="text-muted-foreground text-lg mb-8 max-w-2xl mx-auto text-pretty">
-              While Modulus is still in early development can view the source code and additional
-              documentation for the project on GitHub. Full documentation and deployment guides are
+              You can view the source code and additional documentation for the project on GitHub. Full documentation and deployment guides are
               coming soon.
             </p>
 

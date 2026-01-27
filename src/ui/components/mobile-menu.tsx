@@ -10,11 +10,13 @@ import { useSwipeable } from 'react-swipeable'
 import { useLangNavigation } from '@/i18n/hooks/use-lang-navigation'
 import { t } from '@/i18n/migrate-t'
 import { pathWithoutLocale } from '@/i18n/utils'
-import logoBlack from '@/images/modulus-logo-type-black-transparent.svg'
-import logoWhite from '@/images/modulus-logo-type-white-transparent.svg'
+import logoBlack from '@/images/logo/modulus-logo-black.svg'
+import logoWhite from '@/images/logo/modulus-logo-white.svg'
 import { useTheme } from '@/ui/theme/provider'
 import { LangLink } from '../../i18n/components/lang-link'
 import type { Locale } from '@/i18n/i18n-config'
+
+import './mobile-menu.css'
 
 interface MenuItem {
   title: string
@@ -23,11 +25,6 @@ interface MenuItem {
 }
 
 const menuItems: MenuItem[] = [
-  {
-    title: 'Home',
-    path: '/',
-    children: null,
-  },
   {
     title: 'Docs',
     path: '/docs',
@@ -107,11 +104,8 @@ export function MobileMenu({
       <div className="mt-[4vh] mx-4">
         <div className="branding ml-4 mb-2">
           <LangLink prefetch={false} href="/" lng={lng}>
-            {theme === 'dark' ? (
-              <Image src={logoWhite} width={160} alt="Modulus" />
-            ) : (
-              <Image src={logoBlack} width={160} alt="Modulus" />
-            )}
+            <Image src={logoBlack} width={160} alt="Modulus" className="block dark:hidden" />
+            <Image src={logoWhite} width={160} alt="Modulus" className="hidden dark:block" />
           </LangLink>
         </div>
         <Accordion.Root asChild type="single">
@@ -120,14 +114,10 @@ export function MobileMenu({
               <Accordion.Item asChild value="home">
                 <li className="m-0 mb-1 p-0">
                   <Accordion.Trigger
-                    className={cx(
-                      'text-xl flex menuItems-center text-black font-normal transition-all duration-500 ease-in-out dark:text-gray-200',
-                      'm-0 block rounded px-2 py-1 no-underline',
-                      'hover:text-white dark:hover:text-white hover:bg-canvas-400 dark:hover:bg-canvas-600'
-                    )}
+                    className="mobile-menu-button"
                     onClick={handleMenuItemClick('/')}
                   >
-                    <HomeIcon className="mb-[-1px] mr-2 h-4 w-4" />
+                    <HomeIcon className="mb-[-1px]" />&nbsp;
                     <span>{t('Home')}</span>
                   </Accordion.Trigger>
                 </li>
@@ -144,15 +134,9 @@ export function MobileMenu({
                             event.stopPropagation()
                           }}
                           lang={lng}
-                          className={cx(
-                            'text-xl text-left font-normal transition-all duration-500 text-black ease-in-out dark:text-gray-200',
-                            'm-0 block rounded px-2 py-1 no-underline',
-                            'hover:text-white dark:hover:text-white hover:bg-canvas-400 dark:hover:bg-canvas-700',
-                            {
-                              'bg-canvas-400 text-black dark:text-white dark:bg-slate-800':
-                                getActive(pathname, item.path),
-                            }
-                          )}
+                          className={cx('mobile-menu-button', {
+                            active: getActive(pathname, item.path),
+                          })}
                         >
                           {t(item.title)}
                           {item?.children != null && item?.children?.length > 0 && (
@@ -167,15 +151,9 @@ export function MobileMenu({
                       ) : (
                         <button
                           type="button"
-                          className={cx(
-                            'text-xl text-left font-normal transition-all duration-500 ease-in-out text-black dark:text-gray-200',
-                            'm-0 block rounded px-2 py-1 no-underline',
-                            'hover:text-white dark:hover:text-white hover:bg-canvas-400 dark:hover:bg-canvas-600',
-                            {
-                              'bg-canvas-400 text-black dark:bg-slate-700 dark:text-gray-400':
-                                getActive(pathname, item.path),
-                            }
-                          )}
+                          className={cx('mobile-menu-button', {
+                            active: getActive(pathname, item.path),
+                          })}
                           onClick={
                             item?.children == null || item?.children?.length === 0
                               ? handleMenuItemClick(item.path)
@@ -199,18 +177,9 @@ export function MobileMenu({
                             <li key={child.path} className="m-0 mb-1 p-0 pl-[8px]">
                               <button
                                 type="button"
-                                className={cx(
-                                  'text-xl text-left font-normal transition-all duration-500 ease-in-out text-black dark:text-gray-400',
-                                  'm-0 block no-underline',
-                                  'border rounded py-[3px] px-1 hover:border-canvas-400 dark:hover:border-canvas-600',
-                                  {
-                                    'active border-canvas-200 text-gray-600 dark:border-canvas-800 dark:text-gray-400':
-                                      pathWithoutLocale(pathname) === child.path,
-                                  },
-                                  {
-                                    'border-transparent': pathname !== child.path,
-                                  }
-                                )}
+                                className={cx('mobile-menu-button--child', {
+                                  active: pathWithoutLocale(pathname) === child.path,
+                                })}
                                 onClick={handleMenuItemClick(child?.path)}
                               >
                                 {t(child.title)}
