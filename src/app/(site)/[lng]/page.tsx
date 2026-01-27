@@ -101,8 +101,8 @@ export default async function HomePage({
       </Section>
 
       {/* About Ximera */}
-      <Section id="about" className="px-4 py-16 border bg-secondary/20">
-        <Container className=" max-w-[1024px] mx-auto text-center prose">
+      <Section id="about" className="py-16 border-y border-gray-100 dark:border-gray-700 bg-secondary/20">
+        <Container className="max-w-[1024px] px-0 mx-auto text-center prose">
           <h2 className="mb-4 text-balance">
             Part of the Ximera Ecosystem
           </h2>
