@@ -21,7 +21,7 @@ export function Hero() {
               <span className="text-sm text-accent font-medium">In Development</span>
             </div>
 
-            <h1 className="text-5xl md:text-5xl lg:text-6xl font-bold text-foreground mb-6 text-balance leading-[1.1]">
+            <h1 className="text-5xl md:text-5xl lg:text-6xl font-bold text-foreground mb-6 text-balance leading-[1.05]">
               Understand{' '}
               <span className="bg-linear-to-r from-sky-500 via-sky-400 to-fuchsia-500 bg-clip-text text-transparent">
                 Learning

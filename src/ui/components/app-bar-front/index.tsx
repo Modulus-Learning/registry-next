@@ -1,6 +1,6 @@
 'use client'
 
-import { Suspense, useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import { usePathname } from 'next/navigation'
 
 import { Hamburger } from '@infonomic/uikit/react'
@@ -88,12 +88,7 @@ export const AppBarFront = ({ className, lng, ref, ...other }: AppBarProps) => {
       ? 'text-black fill-black dark:text-white dark:fill-white'
       : 'text-black fill-black dark:text-white dark:fill-white'
 
-  const hamburgerColor =
-    hasScrolled || pathName.length > 3
-      ? 'bg-black before:bg-black after:bg-black dark:bg-white dark:before:bg-white dark:after:bg-white'
-      : 'bg-white before:bg-white after:bg-white'
-
-  const hamburgerColorMobileMenuOpen = 'bg-white before:bg-white after:bg-white'
+  const hamburgerColor = 'bg-black before:bg-black after:bg-black dark:bg-white dark:before:bg-white dark:after:bg-white'
 
   return (
     <>
@@ -119,7 +114,7 @@ export const AppBarFront = ({ className, lng, ref, ...other }: AppBarProps) => {
             <ThemeSwitch />
             <div className="lg:hidden">
               <Hamburger
-                color={mobileMenuOpen ? hamburgerColorMobileMenuOpen : hamburgerColor}
+                color={hamburgerColor}
                 open={mobileMenuOpen}
                 onChange={handleToggleMobileMenu}
               />
