@@ -8,8 +8,8 @@ import { HeroAnimation } from './hero-animation'
 export function Hero() {
   return (
     <Section className="pt-8 md:pt-14 pb-20 overflow-hidden">
-      <Container className="mx-auto max-w-[1200px]">
-        <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+      <Container className="mx-auto lg:max-w-[1050px] xl:max-w-[1200px]">
+        <div className="grid lg:grid-cols-2 gap-12 lg:gap-12 items-center">
           {/* Left: Content */}
           <div className="text-center lg:text-left">
             {/* Early development badge */}
