@@ -9,6 +9,7 @@ import { NavigationMenu } from 'radix-ui'
 import { useTranslations } from '@/i18n/client'
 import { useLangNavigation } from '@/i18n/hooks/use-lang-navigation'
 import { pathWithoutLocale } from '@/i18n/utils'
+import type { Locale } from '@/i18n/i18n-config'
 
 function getActive(pathname: string, path: string): boolean {
   const withoutLocale = pathWithoutLocale(pathname)
@@ -18,7 +19,7 @@ function getActive(pathname: string, path: string): boolean {
   return withoutLocale.startsWith(path)
 }
 
-export function MainMenu({ lng, color }: { lng: string; color: string }): React.JSX.Element {
+export function MainMenu({ lng, color }: { lng: Locale; color: string }): React.JSX.Element {
   const { t } = useTranslations('common')
   return (
     <NavigationMenu.Root
@@ -63,12 +64,12 @@ export function MainMenu({ lng, color }: { lng: string; color: string }): React.
 }
 
 interface ListItemProps extends React.ComponentPropsWithoutRef<'a'> {
-  lng: string
+  lng: Locale
 }
 
 const ListItem = React.forwardRef<React.ComponentRef<'a'>, ListItemProps>(
   ({ className, href, title, children, lng }, ref) => {
-    const { navigate } = useLangNavigation(lng as string)
+    const { navigate } = useLangNavigation(lng)
     const pathname = usePathname()
     const isActive = getActive(pathname, href as string)
     return (
@@ -98,12 +99,12 @@ const ListItem = React.forwardRef<React.ComponentRef<'a'>, ListItemProps>(
 ListItem.displayName = 'ListItem'
 
 interface LinkItemProps extends React.ComponentPropsWithoutRef<'a'> {
-  lng: string
+  lng: Locale
   className?: string
 }
 
 const LinkItem = ({ href, color, lng, children }: LinkItemProps) => {
-  const { navigate } = useLangNavigation(lng as string)
+  const { navigate } = useLangNavigation(lng)
   const pathname = usePathname()
   const isActive = getActive(pathname, href as string)
 

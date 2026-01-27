@@ -14,6 +14,7 @@ import logoBlack from '@/images/modulus-logo-type-black-transparent.svg'
 import logoWhite from '@/images/modulus-logo-type-white-transparent.svg'
 import { useTheme } from '@/ui/theme/provider'
 import { LangLink } from '../../i18n/components/lang-link'
+import type { Locale } from '@/i18n/i18n-config'
 
 interface MenuItem {
   title: string
@@ -46,7 +47,7 @@ const menuItems: MenuItem[] = [
 
 interface MobileMenuProps {
   open: boolean
-  lng: string
+  lng: Locale
   onClose: () => void
   joinRef?: any
 }

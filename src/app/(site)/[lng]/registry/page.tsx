@@ -6,12 +6,12 @@ import type { Locale } from '@/i18n/i18n-config'
 
 // Use this to debug ISR
 // export const dynamic = 'error'
-// export const dynamicParams = true // explicit, though default
-// // generateStaticParams stub - so that static pages can be generated on first request.
-// export async function generateStaticParams() {
-//   return []
-// }
-// export const revalidate = 60
+export const dynamicParams = true // explicit, though default
+// generateStaticParams stub - so that static pages can be generated on first request.
+export async function generateStaticParams() {
+  return []
+}
+export const revalidate = 60
 
 export default async function RegistryPage({
   params,

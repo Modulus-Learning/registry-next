@@ -10,12 +10,12 @@ import type { Locale } from '@/i18n/i18n-config'
 
 // // Use this to debug ISR
 // // export const dynamic = 'error'
-// export const dynamicParams = true // explicit, though default
-// // generateStaticParams stub - so that static pages can be generated on first request.
-// export async function generateStaticParams() {
-//   return []
-// }
-// export const revalidate = 60
+export const dynamicParams = true // explicit, though default
+// generateStaticParams stub - so that static pages can be generated on first request.
+export async function generateStaticParams() {
+  return []
+}
+export const revalidate = 60
 
 export default async function HomePage({
   params,
@@ -28,7 +28,7 @@ export default async function HomePage({
       <Branding />
       {/* Hero Section */}
       <Section className="px-4 pt-16 md:pt-24 pb-20">
-        <Container className="mx-auto">
+        <Container className="mx-auto max-w-[1200px]">
           <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
             {/* Left: Content */}
             <div className="text-center lg:text-left">
@@ -142,7 +142,7 @@ export default async function HomePage({
               </p>
 
               <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-                <Button asChild variant="outlined" size="lg" fullWidth={true}>
+                <Button asChild variant="outlined" size="lg">
                   <Link
                     href="https://github.com/XimeraProject"
                     target="_blank"

@@ -4,11 +4,11 @@ import React from 'react'
 import Link from 'next/link'
 
 import { useLangNavigation } from '@/i18n/hooks/use-lang-navigation'
-import { i18nConfig } from '@/i18n/i18n-config'
+import { i18nConfig, type Locale } from '@/i18n/i18n-config'
 
 export interface LangLinkProps {
   href: string
-  lng?: string
+  lng?: Locale
   forceReload?: boolean
   scroll?: boolean
   smoothScrollToTop?: boolean

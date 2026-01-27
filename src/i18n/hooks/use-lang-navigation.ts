@@ -6,19 +6,19 @@ import { usePathname, useRouter } from 'next/navigation'
 import { useCookies } from 'react-cookie'
 
 import { useProgress } from '@/context/progress-bar-provider'
-import { i18nConfig } from '@/i18n/i18n-config'
+import { i18nConfig, type Locale } from '@/i18n/i18n-config'
 import { type SetLanguageActionState, setLanguageAction } from '@/i18n/set-language-action'
 import { localeFromPath, pathWithoutLocale } from '@/i18n/utils'
 
 interface NavigateOptions {
   href: string
-  locale?: string
+  locale?: Locale
   replace?: boolean
   scroll?: boolean
   smoothScrollToTop?: boolean
 }
 
-export const useLangNavigation = (lng: string) => {
+export const useLangNavigation = (lng: Locale) => {
   const [cookies] = useCookies([i18nConfig.cookieName])
   const initialState: SetLanguageActionState = { message: undefined, status: 'idle' }
   const [_, dispatch] = useActionState(setLanguageAction, initialState)

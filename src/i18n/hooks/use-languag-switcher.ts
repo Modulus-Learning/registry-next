@@ -1,8 +1,7 @@
-// src/hooks/useLanguageSwitcher.ts
 'use client'
 
 import { startTransition, useActionState } from 'react'
-import { usePathname, useSearchParams } from 'next/navigation'
+import { usePathname } from 'next/navigation'
 
 import { type SetLanguageActionState, setLanguageAction } from '@/i18n/set-language-action'
 import type { Locale } from '@/i18n/i18n-config'
@@ -13,8 +12,6 @@ interface UseLanguageSwitcherProps {
 
 export function useLanguageSwitcher({ initialLocale }: UseLanguageSwitcherProps) {
   const pathname = usePathname()
-  const searchParams = useSearchParams()
-
   const initialState: SetLanguageActionState = { message: undefined, status: 'idle' }
   const [state, dispatch] = useActionState(setLanguageAction, initialState)
 
@@ -22,7 +19,11 @@ export function useLanguageSwitcher({ initialLocale }: UseLanguageSwitcherProps)
     const data = new FormData()
     data.set('lng', lng)
     data.set('pathname', pathname)
-    data.set('searchParams', searchParams.toString())
+    const search = window.location.search
+    if (search) {
+      // remove leading '?'
+      data.set('searchParams', search.substring(1))
+    }
 
     startTransition(() => {
       dispatch(data)
