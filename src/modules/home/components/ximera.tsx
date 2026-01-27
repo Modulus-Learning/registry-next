@@ -2,8 +2,8 @@ import { Container, Section } from "@infonomic/uikit/react";
 
 export function Ximera() {
   return (
-    <Section id="about" className="py-16 border-y border-gray-100 dark:border-gray-700 bg-secondary/20" >
-      <Container className="max-w-[1024px] px-0 mx-auto text-center prose">
+    <Section id="about" className="py-8 md:py-18 border-y border-gray-100 dark:border-gray-700 bg-secondary/20" >
+      <Container className="max-w-[1024px] mx-auto text-center prose">
         <h2 className="mb-4 text-balance">
           Part of the Ximera Ecosystem
         </h2>

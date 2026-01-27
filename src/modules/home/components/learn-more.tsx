@@ -5,7 +5,7 @@ import { ArrowRight } from 'lucide-react'
 
 export function LearnMore() {
   return (
-    <Section className="py-12">
+    <Section className="py-8 md:py-12">
       <Container className="max-w-[1100px] mx-auto">
         <div className="bg-linear-to-r from-primary/10 via-accent/10 to-primary/10 border border-border rounded-2xl p-8 md:p-12 text-center relative overflow-hidden">
           <div className="relative">

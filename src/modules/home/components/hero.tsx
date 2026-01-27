@@ -7,7 +7,7 @@ import { HeroAnimation } from './hero-animation'
 
 export function Hero() {
   return (
-    <Section className="px-4 pt-16 md:pt-24 pb-20 overflow-hidden">
+    <Section className="pt-8 md:pt-14 pb-20 overflow-hidden">
       <Container className="mx-auto max-w-[1200px]">
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
           {/* Left: Content */}

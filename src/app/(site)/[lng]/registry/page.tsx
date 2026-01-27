@@ -22,7 +22,7 @@ export default async function RegistryPage({
   const { installations } = await getRegistry()
   return (
     <Section className="relative mb-12 py-4">
-      <Branding />
+      {/* <Branding /> */}
       <Container className="relative flex flex-col">
         <div className="prose">
           <h1 className="mb-2">Modulus Installations</h1>

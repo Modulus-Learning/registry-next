@@ -77,7 +77,7 @@ const capabilities = [
 
 export function FeatureCards() {
   return (
-    <Section id="features" className="py-18 px-4">
+    <Section id="features" className="py-8 md:py-18">
       <Container className="max-w-6xl mx-auto">
         <div className="text-center mb-16 prose">
           <h2 className="mt-0 mb-4 text-balance">Built for Everyone in Education</h2>
@@ -88,7 +88,7 @@ export function FeatureCards() {
         </div>
 
         {/* Main feature cards */}
-        <div className="grid md:grid-cols-3 gap-6 mb-20">
+        <div className="grid md:grid-cols-3 gap-6 mb-15 md:mb-20">
           {features.map((feature) => (
             <Card
               hover={true}
@@ -120,7 +120,7 @@ export function FeatureCards() {
           {capabilities.map((cap) => (
             <div
               key={cap.title}
-              className="flex items-start gap-4 p-4 rounded-lg hover:bg-secondary/30 transition-colors"
+              className="flex items-start gap-4 py-3 rounded-lg hover:bg-secondary/30 transition-colors"
             >
               <div className="h-10 w-10 rounded-lg bg-fuchsia-500/10 flex items-center justify-center shrink-0">
                 <cap.icon className="h-5 w-5 text-fuchsia-500" />
