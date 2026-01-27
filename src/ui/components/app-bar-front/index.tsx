@@ -84,7 +84,7 @@ export const AppBarFront = ({ className, lng, ref, ...other }: AppBarProps) => {
 
   const appBarBackground =
     hasScrolled || pathName.length > 3
-      ? 'bg-white/70 dark:bg-primary-900/60 backdrop-blur-md backdrop-saturate-150 border-b border-white/20 dark:border-white/10'
+      ? 'bg-white/70 dark:bg-primary-900/60 backdrop-blur-md backdrop-saturate-150'
       : 'bg-transparent dark:bg-transparent'
 
   const appBarTextColor =
@@ -99,10 +99,17 @@ export const AppBarFront = ({ className, lng, ref, ...other }: AppBarProps) => {
     <>
       <ProgressBar className="fixed h-1 shadow-lg z-50 shadow-primary-600/20 bg-primary-900 dark:bg-white top-0" />
       <header
-        className={cx('w-full sticky top-0 z-30', appBarBackground, className)}
+        className={cx('w-full sticky top-0 z-30 isolate', className)}
         ref={ref}
         {...other}
       >
+        {/* Fix for background blur and mobile devices where background effects break sticky above. */}
+        <div
+          className={cx(
+            'pointer-events-none absolute inset-0 -z-10 transition-colors duration-300',
+            appBarBackground
+          )}
+        />
         <div
           className={cx(
             'app-bar flex h-[60px] w-full items-center gap-4 pl-0 pr-[12px]',
