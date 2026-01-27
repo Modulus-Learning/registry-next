@@ -1,8 +1,10 @@
 'use client'
 
-import { usePathname, useRouter } from 'next/navigation'
 import { startTransition, useActionState } from 'react'
+import { usePathname, useRouter } from 'next/navigation'
+
 import { useCookies } from 'react-cookie'
+
 import { useProgress } from '@/context/progress-bar-provider'
 import { i18nConfig } from '@/i18n/i18n-config'
 import { type SetLanguageActionState, setLanguageAction } from '@/i18n/set-language-action'

@@ -1,6 +1,6 @@
 import Link from 'next/link'
 
-import { Button, Card, Container, Section } from '@infonomic/uikit/react'
+import { Button, Container, Section } from '@infonomic/uikit/react'
 import { ArrowRight, BookOpen, ExternalLink } from 'lucide-react'
 
 import { FeatureCards } from '@/modules/home/components/feature-cards'
@@ -8,14 +8,14 @@ import { HeroAnimation } from '@/modules/home/components/hero-animation'
 import { Branding } from '@/ui/components/branding'
 import type { Locale } from '@/i18n/i18n-config'
 
-// Use this to debug ISR
-// export const dynamic = 'error'
-export const dynamicParams = true // explicit, though default
-// generateStaticParams stub - so that static pages can be generated on first request.
-export async function generateStaticParams() {
-  return []
-}
-export const revalidate = 60
+// // Use this to debug ISR
+// // export const dynamic = 'error'
+// export const dynamicParams = true // explicit, though default
+// // generateStaticParams stub - so that static pages can be generated on first request.
+// export async function generateStaticParams() {
+//   return []
+// }
+// export const revalidate = 60
 
 export default async function HomePage({
   params,

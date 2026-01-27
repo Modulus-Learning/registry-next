@@ -1,6 +1,6 @@
 import { resolve } from 'node:path'
-import { config } from 'dotenv'
 
+import { config } from 'dotenv'
 import type { NextConfig } from 'next'
 
 // Disable dotenv tips/messages
@@ -12,6 +12,9 @@ config({ path: resolve(process.cwd(), '.env') })
 
 const nextConfig: NextConfig = {
   output: 'standalone',
+  turbopack: {
+    resolveExtensions: ['.mdx', '.tsx', '.ts', '.jsx', '.js', '.mjs', '.json'],
+  },
   images: {
     remotePatterns: [
       {
@@ -22,6 +25,9 @@ const nextConfig: NextConfig = {
       },
     ],
   },
+  productionBrowserSourceMaps: false,
+  reactStrictMode: true,
+  reactCompiler: true,
 }
 
 export default nextConfig

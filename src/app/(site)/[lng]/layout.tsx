@@ -15,7 +15,7 @@ import { Providers } from './providers'
  */
 import '@/ui/styles/global.css'
 
-import { StatusBanner } from '@/ui/components/status-banner'
+// import { StatusBanner } from '@/ui/components/status-banner'
 import type { Locale } from '@/i18n/i18n-config'
 
 export const metadata: Metadata = {

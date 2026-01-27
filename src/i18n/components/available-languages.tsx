@@ -1,14 +1,13 @@
 'use client'
+
 import type React from 'react'
 
+import { CheckIcon } from '@infonomic/uikit/react'
 import cx from 'classnames'
 import { twMerge } from 'tailwind-merge'
 
 import { useLangNavigation } from '@/i18n/hooks/use-lang-navigation'
 import { availableLanguageMap as languageMap } from '@/i18n/language-map'
-
-import { CheckIcon } from '@infonomic/uikit/react'
-
 import type { AvailableLanguagesType } from '@/i18n/language-map'
 
 function hasMoreThanOneLanguage(availableLanguages: AvailableLanguagesType): boolean {

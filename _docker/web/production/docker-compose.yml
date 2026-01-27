@@ -1,8 +1,8 @@
 version: '3'
 services:
   app:
-    image: modulus_registry:app-1.0.0
-    container_name: modulus_registry_app
+    image: modulus_learning:app-1.0.0
+    container_name: modulus_learning_app
     env_file: ./.env
     ports:
       - 80:8000

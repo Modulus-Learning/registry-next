@@ -29,4 +29,4 @@ docker build \
   --network=host \
   --file Dockerfile \
   --build-arg VERSION=$VERSION \
-  --tag modulus_registry:app-$VERSION ../../../
+  --tag modulus_learning:app-$VERSION ../../../

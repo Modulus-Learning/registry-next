@@ -1,10 +1,10 @@
 // src/hooks/useLanguageSwitcher.ts
 'use client'
 
-import { usePathname, useSearchParams } from 'next/navigation'
 import { startTransition, useActionState } from 'react'
-import { type SetLanguageActionState, setLanguageAction } from '@/i18n/set-language-action'
+import { usePathname, useSearchParams } from 'next/navigation'
 
+import { type SetLanguageActionState, setLanguageAction } from '@/i18n/set-language-action'
 import type { Locale } from '@/i18n/i18n-config'
 
 interface UseLanguageSwitcherProps {

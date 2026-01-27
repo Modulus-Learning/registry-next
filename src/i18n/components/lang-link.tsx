@@ -1,9 +1,10 @@
 'use client'
 
+import React from 'react'
+import Link from 'next/link'
+
 import { useLangNavigation } from '@/i18n/hooks/use-lang-navigation'
 import { i18nConfig } from '@/i18n/i18n-config'
-import Link from 'next/link'
-import React from 'react'
 
 export interface LangLinkProps {
   href: string
