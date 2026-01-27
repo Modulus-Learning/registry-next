@@ -2,6 +2,7 @@ import { FeatureCards } from '@/modules/home/components/feature-cards'
 import { Hero } from '@/modules/home/components/hero'
 import { LearnMore } from '@/modules/home/components/learn-more'
 import { Ximera } from '@/modules/home/components/ximera'
+import { GradientGlow } from '@/ui/components/gradient'
 import type { Locale } from '@/i18n/i18n-config'
 
 // // Use this to debug ISR
@@ -21,7 +22,7 @@ export default async function HomePage({
   const { lng } = await params
   return (
     <>
-      {/* <Branding /> */}
+      <GradientGlow />
       <Hero />
       <Ximera />
       <FeatureCards />

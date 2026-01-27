@@ -77,9 +77,14 @@ export const AppBarFront = ({ className, lng, ref, ...other }: AppBarProps) => {
     }
   })
 
+  // const appBarBackground =
+  //   hasScrolled || pathName.length > 3
+  //     ? 'bg-white dark:bg-primary-900'
+  //     : 'bg-transparent dark:bg-transparent'
+
   const appBarBackground =
     hasScrolled || pathName.length > 3
-      ? 'bg-white dark:bg-primary-900'
+      ? 'bg-white/70 dark:bg-primary-900/60 backdrop-blur-md backdrop-saturate-150 border-b border-white/20 dark:border-white/10'
       : 'bg-transparent dark:bg-transparent'
 
   const appBarTextColor =
