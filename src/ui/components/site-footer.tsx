@@ -1,5 +1,7 @@
-import cx from 'classnames'
 import Image from 'next/image'
+
+import cx from 'classnames'
+
 import logoWhite from '@/images/logo/modulus-logo-white.svg'
 import { LangLink } from '../../i18n/components/lang-link'
 
@@ -10,7 +12,7 @@ export function SiteFooter({
   lng: string
   sticky?: boolean
 }): React.JSX.Element {
-  const t = (): void => {}
+  const t = (): void => { }
 
   return (
     <div className={cx('z-10 bottom-0 left-0 w-full overflow-hidden', { sticky })}>
@@ -20,7 +22,7 @@ export function SiteFooter({
         <div
           className={cx(
             'footer-content text-white mx-auto max-w-[1200px]',
-            'gap-0 lg:gap-8 sm:grid lg:grid-cols-[1fr_1.2fr_0.8fr]'
+            'gap-0 lg:gap-8 sm:grid lg:grid-cols-[1fr_1.2fr]'
           )}
         >
           <div className="footer-1">
@@ -181,13 +183,13 @@ export function SiteFooter({
             </div>
           </div>
 
-          <div className="footer-3 pt-0 sm:pt-[24px] sm:text-right">
-            <div className="mb-[0.75em] mt-[0.1em] text-lg font-bold text-white">
+          <div className="footer-3 pt-0 sm:pt-[24px] sm:hidden sm:text-right">
+            {/* <div className="mb-[0.75em] mt-[0.1em] text-lg font-bold text-white">
               Connect with Us
             </div>
             <div className="mb-[1em]">
               <span>Social connect here...</span>
-            </div>
+            </div> */}
             <div className="mt-[1.5em] block sm:hidden">
               <p className="text-[0.9em] mt-2">
                 Made with ❤️ by{' '}

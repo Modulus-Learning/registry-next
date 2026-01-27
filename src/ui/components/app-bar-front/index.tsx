@@ -110,7 +110,7 @@ export const AppBarFront = ({ className, lng, ref, ...other }: AppBarProps) => {
           </div>
           <MainMenu lng={lng} color={appBarTextColor} />
           <div className="flex items-center gap-4 lg:gap-6 ml-auto">
-            <LanguageMenu lng={lng} color={appBarTextColor} />
+            {/* <LanguageMenu lng={lng} color={appBarTextColor} /> */}
             <ThemeSwitch />
             <div className="lg:hidden">
               <Hamburger
