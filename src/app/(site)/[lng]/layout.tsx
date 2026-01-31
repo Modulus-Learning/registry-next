@@ -19,7 +19,7 @@ import '@/ui/styles/global.css'
 import type { Locale } from '@/i18n/i18n-config'
 
 export const metadata: Metadata = {
-  title: 'Modulus',
+  title: 'Modulus Learning',
   description:
     'Modulus provides activity analytics for open education. An assignment-grade database designed to track progress on Ximera assignments.',
 }
@@ -37,7 +37,7 @@ export default async function RootLayout({
         <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
         <link rel="shortcut icon" href="/favicon.ico" />
         <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
-        <meta name="apple-mobile-web-app-title" content="Modulus" />
+        <meta name="apple-mobile-web-app-title" content="Modulus Learning" />
         <meta name="color-scheme" content="dark light" />
         <EarlyThemeDetector force="dark" />
       </head>

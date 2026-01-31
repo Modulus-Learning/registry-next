@@ -7,30 +7,31 @@ app = 'modulus-learning'
 primary_region = 'sin'
 
 [build]
-  dockerfile = '_docker/web/production/Dockerfile'
+dockerfile = '_docker/web/production/Dockerfile'
 
 [env]
-  CONTACT_SUBMISSION_FROM_ADDRESS = 'Modulus Learning <info@infonomic.io>'
-  CSP_ENABLED = 'false'
-  GITHUB_REGISTRY_DATA_URL = 'https://raw.githubusercontent.com/Modulus-Learning/registry-data/refs/heads/main/db.json'
-  PORT = '3000'
-  PUBLIC_SERVER_URL = 'http://modulus-learning.org'
-  SITE_DESCRIPTION = 'Modulus provides activity analytics for open education. An assignment-grade database designed to track progress on Ximera assignments.'
-  SITE_NAME = 'Modulus Learning'
-  SMTP_HOST = '127.0.0.1'
-  SMTP_PORT = '1025'
-  SMTP_SECURE = 'false'
-  SYSTEM_EMAIL_FROM_ADDRESS = 'Modulus Learning <info@infonomic.io>'
+SITE_NAME = 'Modulus Learning'
+SITE_DESCRIPTION = 'Modulus Learning provides activity analytics for open education. An assignment-grade database designed to track progress on Ximera assignments.'
+PORT = '3000'
+PUBLIC_SERVER_URL = 'http://modulus-learning.org'
+CONTACT_SUBMISSION_FROM_ADDRESS = 'Modulus Learning <info@infonomic.io>'
+CSP_ENABLED = 'false'
+GITHUB_REGISTRY_DATA_URL = 'https://raw.githubusercontent.com/Modulus-Learning/registry-data/refs/heads/main/db.json'
+
+SMTP_HOST = '127.0.0.1'
+SMTP_PORT = '1025'
+SMTP_SECURE = 'false'
+SYSTEM_EMAIL_FROM_ADDRESS = 'Modulus Learning <info@infonomic.io>'
 
 [http_service]
-  internal_port = 8000
-  force_https = true
-  auto_stop_machines = 'off'
-  auto_start_machines = true
-  min_machines_running = 1
-  processes = ['app']
+internal_port = 8000
+force_https = true
+auto_stop_machines = 'off'
+auto_start_machines = true
+min_machines_running = 1
+processes = ['app']
 
 [[vm]]
-  memory = '512mb'
-  cpus = 1
-  memory_mb = 512
+memory = '512mb'
+cpus = 1
+memory_mb = 512

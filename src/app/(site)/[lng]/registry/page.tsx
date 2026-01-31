@@ -1,5 +1,7 @@
 import { Card, Container, Section } from '@infonomic/uikit/react'
+import type { Metadata } from 'next'
 
+import { getMeta } from '@/lib/meta'
 import { getRegistry } from '@/modules/registry/get-registry'
 import type { Locale } from '@/i18n/i18n-config'
 
@@ -11,6 +13,15 @@ export async function generateStaticParams() {
   return []
 }
 export const revalidate = 60
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ lng: Locale }>
+}): Promise<Metadata> {
+  const { lng } = await params
+  return await getMeta(lng, { title: 'Registry', description: 'Modulus Learning installations registry.' })
+}
 
 export default async function RegistryPage({
   params,

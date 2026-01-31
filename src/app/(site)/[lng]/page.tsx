@@ -1,3 +1,6 @@
+import type { Metadata } from 'next'
+
+import { getMeta } from '@/lib/meta'
 import { FeatureCards } from '@/modules/home/components/feature-cards'
 import { Hero } from '@/modules/home/components/hero'
 import { LearnMore } from '@/modules/home/components/learn-more'
@@ -13,6 +16,15 @@ export async function generateStaticParams() {
   return []
 }
 export const revalidate = 60
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ lng: Locale }>
+}): Promise<Metadata> {
+  const { lng } = await params
+  return await getMeta(lng)
+}
 
 export default async function HomePage({
   params,

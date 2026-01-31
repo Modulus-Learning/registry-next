@@ -21,7 +21,7 @@ export async function getMeta(_lng: string, options: MetaOptions | null = null):
     title: `${siteName} - ${options?.title ?? 'Home'}`,
     applicationName: siteName,
     description: options?.description ?? siteDescription,
-    manifest: '/site.webmanifest?v15',
+    manifest: '/site.webmanifest?v1',
     alternates: {
       canonical: options?.path ?? '/',
     },
@@ -32,7 +32,7 @@ export async function getMeta(_lng: string, options: MetaOptions | null = null):
       type: 'website',
       images: [
         {
-          url: options?.image?.url ?? '/opengraph-image.png?v15',
+          url: options?.image?.url ?? '/opengraph-image.png?v1',
           width: options?.image?.width ?? 2200,
           height: options?.image?.height ?? 1150,
           alt: options?.image?.alt ?? siteDescription,
@@ -46,7 +46,7 @@ export async function getMeta(_lng: string, options: MetaOptions | null = null):
       description: options?.description ?? siteDescription,
       images: [
         {
-          url: options?.image?.url ?? '/twitter-image.png?v15',
+          url: options?.image?.url ?? '/twitter-image.png?v1',
           width: options?.image?.width ?? 2200,
           height: options?.image?.height ?? 1150,
           alt: options?.image?.alt ?? siteDescription,
