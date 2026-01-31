@@ -5,8 +5,8 @@ import { ArrowRight } from 'lucide-react'
 
 export function LearnMore() {
   return (
-    <Section className="py-8 md:py-12">
-      <Container className="max-w-[1100px] mx-auto">
+    <Section className="py-8 md:pt-12 md:pb-24">
+      <Container className="2xl:max-w-[74.375rem]">
         <div className="bg-linear-to-r from-primary/10 via-accent/10 to-primary/10 border border-border rounded-2xl p-8 md:p-12 text-center relative overflow-hidden">
           <div className="relative">
             <div className="inline-flex items-center gap-2 border rounded-full px-4 py-1.5 mb-6">
@@ -24,7 +24,7 @@ export function LearnMore() {
             </p>
 
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-              <Button asChild variant="outlined" size="lg">
+              <Button asChild variant="filled" size="lg">
                 <Link
                   href="https://github.com/XimeraProject"
                   target="_blank"

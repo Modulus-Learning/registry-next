@@ -78,7 +78,7 @@ const capabilities = [
 export function FeatureCards() {
   return (
     <Section id="features" className="py-8 md:py-18">
-      <Container className="max-w-6xl mx-auto">
+      <Container className="2xl:max-w-[74.375rem]">
         <div className="text-center mb-16 prose">
           <h2 className="mt-0 mb-4 text-balance">Built for Everyone in Education</h2>
           <p className="muted text-lg max-w-2xl mx-auto text-pretty">
@@ -116,7 +116,7 @@ export function FeatureCards() {
         </div>
 
         {/* Capabilities grid */}
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 pt-8">
           {capabilities.map((cap) => (
             <div
               key={cap.title}

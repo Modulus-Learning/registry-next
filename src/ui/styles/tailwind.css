@@ -16,17 +16,17 @@
   margin: 0 auto;
   max-width: 60rem;
 
-  /* Large */
+  /* Large breakpoint -  max-width 1024px */
   @media (min-width: 66rem) {
     max-width: 64rem;
   }
 
-  /* X-Large */
+  /* X-Large breakpoint - max-width 1190px */
   @media (min-width: 77rem) {
     max-width: 74.375rem;
   }
 
-  /* 2X-Large */
+  /* 2X-Large breakpoint  max-width 1400px*/
   @media (min-width: 94rem) {
     max-width: 87.5rem;
   }

@@ -8,7 +8,8 @@ import { HeroAnimation } from './hero-animation'
 export function Hero() {
   return (
     <Section className="pt-8 md:pt-14 pb-20 overflow-hidden">
-      <Container className="mx-auto lg:max-w-[1050px] xl:max-w-[1200px]">
+      <Container className="xl:max-w-[68rem] 2xl:max-w-[74.375rem]">
+        {/* <Container className="mx-auto lg:max-w-[1050px] xl:max-w-[1100px] 2xl:max-w-[1150px]"> */}
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-12 items-center">
           {/* Left: Content */}
           <div className="text-center lg:text-left">
@@ -21,7 +22,7 @@ export function Hero() {
               <span className="text-sm text-accent font-medium">In Development</span>
             </div>
 
-            <h1 className="text-5xl md:text-5xl lg:text-6xl font-bold text-foreground mb-6 text-balance leading-[1.05]">
+            <h1 className="text-5xl md:text-6xl lg:text-6xl font-bold text-foreground mb-6 text-balance leading-[1.05]">
               Understand{' '}
               <span className="bg-linear-to-r from-sky-500 via-sky-400 to-fuchsia-500 bg-clip-text text-transparent">
                 Learning
